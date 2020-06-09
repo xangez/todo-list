@@ -1,0 +1,20 @@
+
+* {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 20px;
+  background-color: rgb(247, 246, 243);
+  color: rgb(47, 47, 58);
+  font-family: 'Alice', serif;
+}
