@@ -10,31 +10,36 @@
   <body>
     <div id="main-container">
       <div id="togglelists-container">
-        <h3 id="my-lists">My Lists</h3>
+
+        <p id="my-lists">My Lists</p>
         <div class="list" id="art-list">drawing</div>
         <div class="list" id="programming-list">programming</div>
         <div class="list" id="book-list">stuff to read</div>
-        <form>
+
+        <form id="addlist-form">
           <input type="button">
           <input type="text" id="add-list" placeholder="add list">
         </form>
       </div>
+
+
       <div class="todo-container" id="bookList-container">
-        <h2>Current-list</h2>
-        <form>
+        <p class="current-list">Current-list</p>
+
+        <form class="todo-item" id="mistborn">
           <input type="checkbox">
           <input type="text" value="mistborn">
         </form>
-        <form>
+        <form class="todo-item" id="harry potter">
           <input type="checkbox">
           <input type="text" value="harry potter">
         </form>        
-        <form>
+        <form class="todo-item" id="sleep">
           <input type="checkbox">
           <input type="text" value="sleep">
         </form>  
 
-        <form id="add-todo">
+        <form class="addtodo-form">
           <input type="button">
           <input type="text" id="add-list" placeholder="add todo">
         </form>
@@ -42,7 +47,7 @@
     </div>
 
     <template id="todoItem-template">
-      <form>
+      <form class="todo-form" id=''>
         <input type="checkbox">
         <input type="text" value="">
       </form>

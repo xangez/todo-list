@@ -15,9 +15,110 @@ html, body {
 body {
   font-size: 20px;
   background-color: rgb(247, 246, 243);
-  color: rgb(47, 47, 58);
+  color: rgb(65, 65, 75);
+  font-family: system-ui;;
+}
+
+#main-container {
+  display: flex;
+  max-width: 1000px;
+  margin: auto;
+}
+
+
+/* global styles */
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit; 
+  font-size: 100%; 
+  line-height: 1.15; 
+}
+
+input {
+  color: inherit;
+}
+
+input:focus {
+  outline: none;
+}
+
+input[type=text] {
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid rgb(204, 201, 201);
+}
+
+input[type=button] {
+  background-color: lightblue;
+  cursor: pointer;
+  height: 0.5em;
+  margin-right: 5px;
+}
+
+#addlist-form, .addtodo-form{
+  padding-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+/* my-lists */
+#togglelists-container {
+  width: 30%;
+  padding: 4%;
+}
+
+#my-lists {
+  margin: 0;
+  border-bottom: 1px solid black;
+  font-size: 1.3em;
+  height: 42px;
+  padding-top: 20px;
+}
+
+.list {
+  margin: 10px;
+  font-size: 0.8em;
+}
+
+#add-list {
+  width: 85%;
+}
+
+/* to-do */
+.todo-container {
+  width: 70%;
+  padding: 4%;
+}
+
+.current-list {
+  margin: 0;
+  padding-bottom: 15px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid black;
+  font-size: 2em;
+}
+
+.todo-item {
+  border-bottom: 1px solid rgb(219, 219, 219);
+  padding: 0.5em;
+  display: flex;
+  align-items: center;
+}
+
+.todo-item>input {
+  border: none;
+  background-color: transparent;
+  font-size: 0.7em;
+}
+
+input[type=checkbox] {
+  margin-right: 10px;
 }
 
 form {
   display: block;
 }
+
