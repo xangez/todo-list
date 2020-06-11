@@ -16,5 +16,8 @@ body {
   font-size: 20px;
   background-color: rgb(247, 246, 243);
   color: rgb(47, 47, 58);
-  font-family: 'Alice', serif;
+}
+
+form {
+  display: block;
 }
