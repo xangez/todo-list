@@ -3,6 +3,10 @@
   box-sizing: border-box;
 }
 
+:root {
+  --lines: 1px solid hsl(0, 0%, 86%)
+}
+
 *, *:before, *:after {
   box-sizing: inherit;
 }
@@ -14,15 +18,15 @@ html, body {
 
 body {
   font-size: 20px;
-  background-color: rgb(247, 246, 243);
+  background-color: hsl(45, 20%, 96%);
   color: rgb(65, 65, 75);
-  font-family: system-ui;;
+  font-family: system-ui;
 }
 
 #main-container {
   display: flex;
-  max-width: 1000px;
   margin: auto;
+  height: 100vh;
 }
 
 
@@ -30,14 +34,9 @@ body {
 
 button,
 input,
-select,
-textarea {
+select {
   font-family: inherit; 
   font-size: 100%; 
-  line-height: 1.15; 
-}
-
-input {
   color: inherit;
 }
 
@@ -48,77 +47,94 @@ input:focus {
 input[type=text] {
   border: none;
   background-color: transparent;
-  border-bottom: 1px solid rgb(204, 201, 201);
+  height: 2.5em;
+  font-size: 0.7em;
+  border-bottom: var(--lines);
+  width: 90%;
 }
 
-input[type=button] {
-  background-color: lightblue;
-  cursor: pointer;
-  height: 0.5em;
-  margin-right: 5px;
-}
-
-#addlist-form, .addtodo-form{
-  padding-top: 10px;
+form {
+  padding-left: 1em;
   display: flex;
   align-items: center;
 }
 
-/* my-lists */
+/* input[type=button] {
+  background-color: hsl(195, 53%, 79%);
+  border-radius: 100%;
+  cursor: pointer;
+  height: 0.5em;
+  width: 0.4em;
+  margin-right: 2%;
+} */
+
+/* My-lists */
 #togglelists-container {
   width: 30%;
-  padding: 4%;
+  max-width: 300px;
+  min-width: 200px;
+  padding-top: 1em;
+  background-color: hsl(0, 0%, 91%);
+  border-right: var(--lines) ;
 }
 
 #my-lists {
   margin: 0;
-  border-bottom: 1px solid black;
   font-size: 1.3em;
   height: 42px;
   padding-top: 20px;
+  padding-left: 1em;
+  color: hsl(189, 35%, 71%);
 }
 
 .list {
-  margin: 10px;
+  padding: 0.8em 2em;
   font-size: 0.8em;
 }
 
-#add-list {
-  width: 85%;
+.list:focus {
+  background-color:hsl(189, 35%, 71%);
+  outline: none;
+}
+
+#addList-form {
+  padding-left: 32px;
 }
 
 /* to-do */
-.todo-container {
+.currentList-container {
   width: 70%;
-  padding: 4%;
+  padding-top: 1em;
 }
 
 .current-list {
   margin: 0;
   padding-bottom: 15px;
+  padding-left: 1em;
   margin-bottom: 10px;
   border-bottom: 1px solid black;
   font-size: 2em;
-}
-
-.todo-item {
-  border-bottom: 1px solid rgb(219, 219, 219);
-  padding: 0.5em;
-  display: flex;
-  align-items: center;
-}
-
-.todo-item>input {
-  border: none;
-  background-color: transparent;
-  font-size: 0.7em;
+  color: rgb(135, 182, 190);
 }
 
 input[type=checkbox] {
+  width: 1.3em;
+  height: 1.3em;
+  background-color: white;
+  border-radius: 50%;
+  vertical-align: middle;
+  border: 1px solid rgb(167, 167, 167);
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
   margin-right: 10px;
+  font-size: 0.7em;
+
 }
 
-form {
-  display: block;
+input[type=checkbox]:checked {
+  background-color: rgb(187, 223, 230);
 }
+
+
 
