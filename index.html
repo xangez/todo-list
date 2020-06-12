@@ -12,9 +12,9 @@
       <div id="togglelists-container">
 
         <p id="my-lists">My Lists</p>
-        <div class="list" id="art-list" tabindex="1">drawing</div>
-        <div class="list" id="programming-list" tabindex="2">programming</div>
-        <div class="list" id="book-list" tabindex="3">stuff to read</div>
+        <div class="list" id="art-list" tabindex="1">Drawing</div>
+        <div class="list" id="programming-list" tabindex="2">Programming</div>
+        <div class="list" id="book-list" tabindex="3">Stuff to read</div>
 
         <form id="addList-form">
           <input type="text" id="addList-input" placeholder="add list">
@@ -22,8 +22,8 @@
       </div>
 
 
-      <div class="currentList-container" id="bookList-container">
-        <p class="current-list">Stuff to read</p>
+      <div class="openList-container" id="bookList-container">
+        <p class="openList-name">Stuff to read</p>
 
         <form class="todo-item" id="mistborn">
           <input type="checkbox">
@@ -45,6 +45,7 @@
       </div>
     </div>
 
+
     <template id="todoItem-template">
       <form class="todo-item" id="">
         <input type="checkbox">
@@ -52,13 +53,25 @@
       </form>  
     </template>
 
-    <template id="currentList-template">
-      <div class="currentList-container" id="">
-        <p></p>
-      <form class="todo-item addTodo-form" >
-        <input type="checkbox">
-        <input type="text" id="todo-formInput" placeholder="add todo">
-      </form>
+    <template id="openList-template">
+      <div class="openList-container" id="">
+          <p></p>
+        <form class="todo-item addTodo-form" >
+          <input type="checkbox">
+          <input type="text" id="todo-formInput" placeholder="add todo">
+        </form>
+      </div>
+    </template>
+
+
+    <template id="listContainer-template">
+      <div id="togglelists-container">
+        <p id="my-lists">My Lists</p>
+        <form id="addList-form">
+          <input type="text" id="addList-input" placeholder="add list">
+        </form>
+      </div>
+      
     </template>
 
     <template id="list-template">

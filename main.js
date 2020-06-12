@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("// import home from './home';\n// import menu from './menu';\n// import contacts from './contacts';\n\n(function(){\n  console.log('hi')\n\n})();\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("// import home from './home';\n// import menu from './menu';\n// import contacts from './contacts';\n\n(function(){\n  //const openList = document.querySelector('.openList-container');\n  const addTodoForm = document.querySelector('.addTodo-form');\n  addTodoForm.addEventListener('submit', addTodo);\n\n  const openListName = document.querySelector('.openList-name');\n  const todoFormInput = document.querySelector('.todo-formInput');\n\n  function addTodo(e) {\n    e.preventDefault();\n    openListName.textContent = 'hi';\n\n  }\n\n\n\n})();\n\n\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 

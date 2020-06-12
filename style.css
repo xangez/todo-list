@@ -3,12 +3,12 @@
   box-sizing: border-box;
 }
 
-:root {
-  --lines: 1px solid hsl(0, 0%, 86%)
-}
-
 *, *:before, *:after {
   box-sizing: inherit;
+}
+
+:root {
+  --lines: 1px solid hsl(0, 0%, 86%)
 }
 
 html, body {
@@ -68,6 +68,7 @@ form {
   margin-right: 2%;
 } */
 
+
 /* My-lists */
 #togglelists-container {
   width: 30%;
@@ -92,6 +93,10 @@ form {
   font-size: 0.8em;
 }
 
+.list {
+  cursor: pointer;
+}
+
 .list:focus {
   background-color:hsl(189, 35%, 71%);
   outline: none;
@@ -101,26 +106,31 @@ form {
   padding-left: 32px;
 }
 
-/* to-do */
-.currentList-container {
+#addList-input {
+  font-size: 0.8em;
+}
+
+
+/* open-list */
+.openList-container {
   width: 70%;
   padding-top: 1em;
 }
 
-.current-list {
+.openList-name {
   margin: 0;
   padding-bottom: 15px;
   padding-left: 1em;
   margin-bottom: 10px;
-  border-bottom: 1px solid black;
+  border-bottom: 2px solid rgb(190, 190, 190);
   font-size: 2em;
-  color: rgb(135, 182, 190);
+  color: hsl(189, 30%, 64%);
 }
 
 input[type=checkbox] {
   width: 1.3em;
   height: 1.3em;
-  background-color: white;
+  background-color: transparent;
   border-radius: 50%;
   vertical-align: middle;
   border: 1px solid rgb(167, 167, 167);
@@ -129,7 +139,6 @@ input[type=checkbox] {
   cursor: pointer;
   margin-right: 10px;
   font-size: 0.7em;
-
 }
 
 input[type=checkbox]:checked {
