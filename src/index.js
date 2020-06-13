@@ -2,15 +2,15 @@
 
 const mainContainer = document.querySelector('#main-container');
 
-//mylists
+//mylists container
 const toggleListsContainer = document.querySelector('#togglelists-container');
 
-//listform
+//adding listform
 const addListForm = document.querySelector('#addList-form');
 const addListInput = document.querySelector('#addList-input');
 addListForm.addEventListener('submit', addList);
 
-//openlist
+//currently openlist
 const openListName = document.querySelector('.openList-name');
 const openListContainer = document.querySelector('.openList-container');
 const todoItemTemplate = document.querySelector('#todoItem-template');
@@ -21,19 +21,25 @@ const addTodoInput = document.querySelector('#addTodo-input');
 
 addTodoForm.addEventListener('submit', addTodo);
 
-let allLists = [{name: 'Drawing', todos: []}, {name: 'Programming', todos: []}, 
-                  { name: 'Stuff to read', todos: [{info: 'mistborn'}, {info: 'harry potter'}, {info: 'hobbit'} ]}];
+
+let allLists = [
+                {name: 'Drawing', id:'0', todos: [{info: 'figure drawing'}]}, 
+                {name: 'Programming', id:'1', todos: []}, 
+                {name: 'Stuff to read', id:'2', todos: [{info: 'mistborn'}, {info: 'harry potter'}, {info: 'hobbit'} ]}
+              ];
+
+let selectedList = allLists[0].id;
 
 //factories
 function createList(name) {
-  return {name: name, todos:[]}
+  return {name: name, id: Date.now(), todos:[]}
 } 
 
 function createTodoItem(info) {
   return {info: info};
 }
 
-//add
+//addlists
 function addList(e) {
   e.preventDefault();
   let listname = addListInput.value;
@@ -44,54 +50,70 @@ function addList(e) {
   renderMyLists();
 }
 
+//removelistcontainer
 function removeListContainer() {
   const listContainer = document.querySelector('#list-container');
   listContainer.remove();
 }
 
-function renderMyLists() {
+//render all lists
+function renderMyLists(focusedList) {
   const listContainer = document.createElement('div');
   listContainer.id = 'list-container';
   
-  for (let i=0; i<allLists.length; i++) {
+
+  allLists.forEach(list => {
     const listItem = document.createElement('div');
     listItem.classList = 'list';
-    listItem.textContent = allLists[i].name;
+    listItem.id = list.id;
+    listItem.textContent = list.name;
     listContainer.appendChild(listItem);
-  }
+  })
 
   toggleListsContainer.insertBefore(listContainer, addListForm);
   addListInput.value = null;
   listContainer.addEventListener('click', toggleLists);
 
+  //refocus previous selected list
+  const previousSelectedList = document.getElementById(selectedList);
+  previousSelectedList.classList.add('listFocus');
+
 }
 
+//toggle lists
 function toggleLists(e) {
   const listItems = document.querySelectorAll('.list');
   listItems.forEach(list => {
     list.classList.remove('listFocus');
   })
 
-  let selectedList = e.target.textContent;
+  selectedList = e.target.id;
+
 
   if (e.target.classList == 'list') {
     e.target.classList.add('listFocus');
   }
 
-  renderOpenList(selectedList);
+  openListName.textContent = e.target.textContent;
+  renderOpenList();
 }
-
 
 //todo items
 function addTodo(e) {
   e.preventDefault();
+  let todoInfo = addTodoInput.value;
+  const newTodo = createTodoItem(todoInfo);
+  
+
 }
 
-function renderOpenList(selectedList) {
+//render todos of selectedlist
+
+function renderOpenList() {
 
   removeTodoContainer();
 
-  let selectedlistTodos = getTodos(selectedList);
+  let selectedlistTodos = getTodos();
 
   const todoContainer = document.createElement('div');
   todoContainer.id = 'todo-container';
@@ -106,7 +128,6 @@ function renderOpenList(selectedList) {
 
   openListContainer.insertBefore(todoContainer, addTodoForm);
   addTodoInput.value = null;
-
 }
 
 function removeTodoContainer() {
@@ -114,19 +135,17 @@ function removeTodoContainer() {
   todoContainer.remove();
 }
 
-function getTodos(selectedList) {
+function getTodos() {
   for (let i=0; i<allLists.length; i++) {
-    if (allLists[i].name == selectedList) {
+    if (allLists[i].id == selectedList) {
        return allLists[i].todos;
     }
   }
 }
 
-renderMyLists();
-
- 
-
-
-
-
-
+window.onload = function() {
+  renderMyLists();
+  const firstList = document.getElementById(selectedList);
+  firstList.classList.add('listFocus');
+  renderOpenList();
+}
