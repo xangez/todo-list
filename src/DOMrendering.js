@@ -59,7 +59,7 @@ function renderMyLists() {
 function addTodoAndRender(e) {
   e.preventDefault();
   addTodo(addTodoInput.value);
-  
+  renderTodos();
 }
 
 

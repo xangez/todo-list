@@ -1,4 +1,4 @@
-import {allLists, createList} from './factories.js';
+import {allLists, createList, createTodoItem} from './factories.js';
 import {selectedList} from './DOMrendering';
 
 function addList(value) {
@@ -8,7 +8,7 @@ function addList(value) {
 
 function addTodo(value) {
   const newTodo = createTodoItem(value);
-  for (i=0; i<allLists.length; i++) {
+  for (let i=0; i<allLists.length; i++) {
     if (allLists[i].id == selectedList){
       allLists[i].todos.push(newTodo);
     }
