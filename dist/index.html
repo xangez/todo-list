@@ -1,47 +1,31 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>todo-list</title>
     <link rel="stylesheet" href="style.css">
-    
+
   </head>
   <body>
     <div id="main-container">
       <div id="togglelists-container">
-
         <p id="my-lists">My Lists</p>
-        <div class="list" id="art-list" tabindex="1">Drawing</div>
-        <div class="list" id="programming-list" tabindex="2">Programming</div>
-        <div class="list" id="book-list" tabindex="3">Stuff to read</div>
-
         <form id="addList-form">
           <input type="text" id="addList-input" placeholder="add list">
         </form>
       </div>
 
-
-      <div class="openList-container" id="bookList-container">
+      <div class="openList-container">
         <p class="openList-name">Stuff to read</p>
 
-        <form class="todo-item" id="mistborn">
-          <input type="checkbox">
-          <input type="text" value="mistborn">
-        </form>
-        <form class="todo-item" id="harry potter">
-          <input type="checkbox">
-          <input type="text" value="harry potter">
-        </form>        
-        <form class="todo-item" id="sleep">
-          <input type="checkbox">
-          <input type="text" value="hobbit">
-        </form>  
+          <div id="todo-container">
 
-        <form class="todo-item addTodo-form" >
-          <input type="checkbox">
-          <input type="text" id="todo-formInput" placeholder="add todo">
-        </form>
+          </div>
+          <form class="todo-item" id="addTodo-form" >
+            <input type="checkbox">
+            <input type="text" id="addTodo-input" placeholder="add todo">
+          </form>
       </div>
     </div>
 
@@ -49,36 +33,11 @@
     <template id="todoItem-template">
       <form class="todo-item" id="">
         <input type="checkbox">
-        <input type="text" value="">
+        <input type="text" id='todo-text' value="">
       </form>  
     </template>
-
-    <template id="openList-template">
-      <div class="openList-container" id="">
-          <p></p>
-        <form class="todo-item addTodo-form" >
-          <input type="checkbox">
-          <input type="text" id="todo-formInput" placeholder="add todo">
-        </form>
-      </div>
-    </template>
-
-
-    <template id="listContainer-template">
-      <div id="togglelists-container">
-        <p id="my-lists">My Lists</p>
-        <form id="addList-form">
-          <input type="text" id="addList-input" placeholder="add list">
-        </form>
-      </div>
-      
-    </template>
-
-    <template id="list-template">
-      <div class="list" id="" tabindex=""></div>
-    </template>
     
+     <script src="index.js"></script>
 
-    <script src="main.js"></script>
   </body>
 </html>
