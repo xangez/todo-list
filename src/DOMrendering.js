@@ -1,31 +1,32 @@
 import {allLists} from './factories';
-import {addList} from './formControllers';
+import {addList} from './formControllers'
 
-const toggleListsContainer = document.querySelector('#togglelists-container');
+const listContainer = document.querySelector('#list-container');
+listContainer.addEventListener('click', toggleLists);
 
 //adding listform
-const addListInput = document.querySelector('#addList-input');
 const addListForm = document.querySelector('#addList-form');
 addListForm.addEventListener('submit', addList);
 
+const addListInput = document.querySelector('#addList-input');
+
 //currently openlist
+const todoContainer = document.querySelector('#todo-container');
+
 const openListName = document.querySelector('.openList-name');
-const openListContainer = document.querySelector('.openList-container');
 const todoItemTemplate = document.querySelector('#todoItem-template');
 
 //todo form
 const addTodoForm = document.querySelector('#addTodo-form');
 const addTodoInput = document.querySelector('#addTodo-input');
 
+
 let selectedList = allLists[0].id;
 
 
 //lists
 function renderMyLists() {
-
-  const listContainer = document.createElement('div');
-  listContainer.id = 'list-container';
-  
+  listContainer.innerHTML = '';  
 
   allLists.forEach(list => {
     const listItem = document.createElement('div');
@@ -35,9 +36,7 @@ function renderMyLists() {
     listContainer.appendChild(listItem);
   })
 
-  toggleListsContainer.insertBefore(listContainer, addListForm);
   addListInput.value = null;
-  listContainer.addEventListener('click', toggleLists);
 
   //refocus previous selected list
   const previousSelectedList = document.getElementById(selectedList);
@@ -45,22 +44,13 @@ function renderMyLists() {
 
 }
 
-function removeListContainer() {
-  const listContainer = document.querySelector('#list-container');
-  listContainer.remove();
-}
+
 
 //todos
 
 function renderTodos() {
-
-  removeTodoContainer();
-
+  todoContainer.innerHTML = '';
   let selectedlistTodos = getTodos();
-
-  const todoContainer = document.createElement('div');
-  todoContainer.id = 'todo-container';
-
 
   selectedlistTodos.forEach(todo => {
     const todoElement = document.importNode(todoItemTemplate.content, true);
@@ -69,15 +59,7 @@ function renderTodos() {
     todoContainer.appendChild(todoElement);
   });
 
-  openListContainer.insertBefore(todoContainer, addTodoForm);
   addTodoInput.value = null;
-  
-}
-
-
-function removeTodoContainer() {
-  const todoContainer = document.querySelector('#todo-container');
-  todoContainer.remove();
 }
 
 
@@ -89,13 +71,15 @@ function getTodos() {
   }
 }
 
+
+
 //toggling
 
 function toggleLists(e) {
   const listItems = document.querySelectorAll('.list');
   listItems.forEach(list => {
     list.classList.remove('listFocus');
-  })
+  });
 
   selectedList = e.target.id;
 
@@ -108,4 +92,7 @@ function toggleLists(e) {
   renderTodos();
 }
 
-export {renderMyLists, renderTodos, selectedList, removeListContainer};
+
+
+
+export {renderMyLists, renderTodos, selectedList};
