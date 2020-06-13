@@ -1,26 +1,18 @@
 import {allLists, createList} from './factories.js';
+import {selectedList} from './DOMrendering';
 
-import {renderMyLists} from './DOMrendering';
-
-
-const addListInput = document.querySelector('#addList-input');
-
-
-function addList(e) {
-  e.preventDefault();
-  let listname = addListInput.value;
-  const newList = createList(listname);
+function addList(value) {
+  const newList = createList(value);
   allLists.push(newList);
-
-  renderMyLists();
 }
 
+function addTodo(value) {
+  const newTodo = createTodoItem(value);
+  for (i=0; i<allLists.length; i++) {
+    if (allLists[i].id == selectedList){
+      allLists[i].todos.push(newTodo);
+    }
+  }
+}
 
-
-// function addTodo(e) {
-//   e.preventDefault();
-//   let todoInfo = addTodoInput.value;
-//   const newTodo = createTodoItem(todoInfo);
-// }
-
-export {addList};
+export {addList, addTodo};

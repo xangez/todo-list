@@ -1,12 +1,12 @@
 import {allLists} from './factories';
-import {addList} from './formControllers'
+import {addList, addTodo} from './formControllers'
 
 const listContainer = document.querySelector('#list-container');
 listContainer.addEventListener('click', toggleLists);
 
 //adding listform
 const addListForm = document.querySelector('#addList-form');
-addListForm.addEventListener('submit', addList);
+addListForm.addEventListener('submit', addListAndRender);
 
 const addListInput = document.querySelector('#addList-input');
 
@@ -18,10 +18,18 @@ const todoItemTemplate = document.querySelector('#todoItem-template');
 
 //todo form
 const addTodoForm = document.querySelector('#addTodo-form');
+addTodoForm.addEventListener('submit', addTodoAndRender)
 const addTodoInput = document.querySelector('#addTodo-input');
 
 
 let selectedList = allLists[0].id;
+
+function addListAndRender(e) {
+  e.preventDefault();
+  addList(addListInput.value);
+  renderMyLists();
+}
+
 
 
 //lists
@@ -47,6 +55,13 @@ function renderMyLists() {
 
 
 //todos
+
+function addTodoAndRender(e) {
+  e.preventDefault();
+  addTodo(addTodoInput.value);
+  
+}
+
 
 function renderTodos() {
   todoContainer.innerHTML = '';
