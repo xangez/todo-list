@@ -15,4 +15,13 @@ function addTodo(value) {
   }
 }
 
+// function editTodo(info, ID) {
+//   for (let i=0; i<allLists.length; i++) {
+//     if (allLists[i].id == selectedList){
+//       allLists[i].todos[ID] = info;
+//     }
+//   }
+
+// }
+
 export {addList, addTodo};

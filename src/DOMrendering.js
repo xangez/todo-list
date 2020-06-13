@@ -1,5 +1,5 @@
 import {allLists} from './factories';
-import {addList, addTodo} from './formControllers'
+import {addList, addTodo, editTodo} from './formControllers'
 
 const listContainer = document.querySelector('#list-container');
 listContainer.addEventListener('click', toggleLists);
@@ -12,6 +12,7 @@ const addListInput = document.querySelector('#addList-input');
 
 //currently openlist
 const todoContainer = document.querySelector('#todo-container');
+//todoContainer.addEventListener('submit', editTodoAndRender);
 
 const openListName = document.querySelector('.openList-name');
 const todoItemTemplate = document.querySelector('#todoItem-template');
@@ -62,15 +63,30 @@ function addTodoAndRender(e) {
   renderTodos();
 }
 
+// function editTodoAndRender(e){
+//   e.preventDefault();
+//   if (e.target.classList == 'todo-item'){
+//     let newInfo = e.target.value;
+//     let todoID = e.target.id;
+//     editTodo(newInfo, todoID);
+//   }
+//   renderTodos();
+// }
+
 
 function renderTodos() {
   todoContainer.innerHTML = '';
   let selectedlistTodos = getTodos();
 
-  selectedlistTodos.forEach(todo => {
+  selectedlistTodos.forEach((todo, index) => {
     const todoElement = document.importNode(todoItemTemplate.content, true);
-    const todoText = todoElement.querySelector('#todo-text');
+
+    const todoFormElement = todoElement.querySelector('.todo-item');
+    todoFormElement.id = index;
+
+    const todoText = todoElement.querySelector('.todo-text');
     todoText.value = todo.info;
+
     todoContainer.appendChild(todoElement);
   });
 
