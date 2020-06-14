@@ -19,6 +19,9 @@ const listDisplay = (function() {
 
   function addListAndRender(e) {
     e.preventDefault();
+    if (addListInput.value == '' || null){
+      return;
+    }
     addList(addListInput.value);
     renderMyLists();
   }
@@ -84,6 +87,9 @@ const todosDisplay = (function() {
 
   function addTodoAndRender(e) {
     e.preventDefault();
+    if (addTodoInput.value == '' || null){
+      return;
+    }
     addTodo(addTodoInput.value);
     renderTodos();
   }
