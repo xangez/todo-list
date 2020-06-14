@@ -1,5 +1,7 @@
-import {allLists, createList, createTodoItem} from './factories.js';
+import {allLists, createList, createTodoItem} from './storage.js';
 import {selectedList} from './DOMrendering';
+
+
 
 function addList(value) {
   const newList = createList(value);
@@ -24,4 +26,4 @@ function addTodo(value) {
 
 // }
 
-export {addList, addTodo};
+export {addList, addTodo, selectedList};

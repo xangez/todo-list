@@ -1,12 +1,17 @@
 
-import {renderMyLists, renderTodos, selectedList} from './DOMrendering';
+import {listDisplay, todosDisplay, selectedList} from './DOMrendering.js';
 
 (function() {
-  renderMyLists();
+
+  listDisplay.renderMyLists();
+
   const firstList = document.getElementById(selectedList);
   firstList.classList.add('listFocus');
-  renderTodos();
 
+  todosDisplay.renderTodos();
+
+  listDisplay;
+  todosDisplay;
 
   
 })();

@@ -1,13 +1,16 @@
 
 
-//factories
+//constructors
 function createList(name) {
   return {name: name, id: Date.now(), todos:[]}
 } 
 
 function createTodoItem(info) {
+  
   return {info: info};
 }
+
+
 
 let allLists = [
   {name: 'Drawing', id:'0', todos: [{info: 'figure drawing'}]}, 
