@@ -1,5 +1,5 @@
 
-import {listDisplay, todosDisplay, selectedList, editTodoDisplay} from './DOMrendering.js';
+import {listDisplay, todosDisplay, selectedList} from './DOMrendering.js';
 
 (function() {
 

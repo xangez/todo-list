@@ -102,6 +102,8 @@ const todosDisplay = (function() {
   
       const todoFormElement = todoElement.querySelector('.todo-item');
       todoFormElement.id = index;
+
+      todoFormElement.addEventListener('submit', editTodoAndRender);
   
       const todoText = todoElement.querySelector('.todo-text');
       todoText.value = todo.info;
@@ -120,6 +122,18 @@ const todosDisplay = (function() {
       }
     }
   }
+    
+  function editTodoAndRender(e){
+    e.preventDefault();
+      const formElements = e.target.childNodes;
+      let newInfo = formElements[3].value;
+      let todoID = e.target.id;
+      editTodo(newInfo, todoID);
+    
+    renderTodos();
+  }
+
+
 
   return {
     renderTodos,
@@ -127,39 +141,6 @@ const todosDisplay = (function() {
   
 })();
 
-// const editTodoDisplay = (function() {
-//   const todoContainer = document.querySelector('#todo-container');
-//   todoContainer.addEventListener('submit', editTodoAndRender);
-  
-    
-//   function editTodoAndRender(e){
-//     if (e.target.classList.contains('todo-text')){
-//       e.preventDefault();
-//       let newInfo = e.target.value;
-//       let todoID = e.target.parentNode.id;
-//       editTodo(newInfo, todoID);
-//     }
-//     todoDisplay.renderTodos();
-//   }
 
-// })();
 
-const editTodoDisplay = (function() {
-  const todoItems = document.querySelectorAll('.something');
-  console.log(todoItems);
-  todoItems.forEach(todo => todo.addEventListener('submit', editTodoAndRender));
-  
-    
-  function editTodoAndRender(e){
-    e.preventDefault();
-      console.log(e.target.childNodes);
-    //   let newInfo = formElements[1].value;
-    //   let todoID = e.target.id;
-    //   editTodo(newInfo, todoID);
-    
-    // todoDisplay.renderTodos();
-  }
-
-})();
-
-export {listDisplay, todosDisplay, selectedList, editTodoDisplay};
+export {listDisplay, todosDisplay, selectedList};
