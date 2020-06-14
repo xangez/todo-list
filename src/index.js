@@ -1,5 +1,5 @@
 
-import {listDisplay, todosDisplay, selectedList} from './DOMrendering.js';
+import {listDisplay, todosDisplay, selectedList, editTodoDisplay} from './DOMrendering.js';
 
 (function() {
 
@@ -9,9 +9,6 @@ import {listDisplay, todosDisplay, selectedList} from './DOMrendering.js';
   firstList.classList.add('listFocus');
 
   todosDisplay.renderTodos();
-
-  listDisplay;
-  todosDisplay;
 
   
 })();

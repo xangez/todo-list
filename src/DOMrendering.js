@@ -1,5 +1,5 @@
 import {allLists} from './storage.js';
-import {addList, addTodo} from './updateStorage.js'
+import {addList, addTodo, editTodo} from './updateStorage.js'
 
 let selectedList = allLists[0].id;
 
@@ -75,9 +75,7 @@ const listDisplay = (function() {
 
 const todosDisplay = (function() {
 
-  const todoContainer = document.querySelector('#todo-container');
-  //todoContainer.addEventListener('submit', editTodoAndRender);
-  
+  const todoContainer = document.querySelector('#todo-container');  
   const todoItemTemplate = document.querySelector('#todoItem-template');
   
   //todo form
@@ -93,16 +91,6 @@ const todosDisplay = (function() {
     addTodo(addTodoInput.value);
     renderTodos();
   }
-  
-  // function editTodoAndRender(e){
-  //   e.preventDefault();
-  //   if (e.target.classList == 'todo-item'){
-  //     let newInfo = e.target.value;
-  //     let todoID = e.target.id;
-  //     editTodo(newInfo, todoID);
-  //   }
-  //   renderTodos();
-  // }
   
   
   function renderTodos() {
@@ -139,4 +127,39 @@ const todosDisplay = (function() {
   
 })();
 
-export {listDisplay, todosDisplay, selectedList};
+// const editTodoDisplay = (function() {
+//   const todoContainer = document.querySelector('#todo-container');
+//   todoContainer.addEventListener('submit', editTodoAndRender);
+  
+    
+//   function editTodoAndRender(e){
+//     if (e.target.classList.contains('todo-text')){
+//       e.preventDefault();
+//       let newInfo = e.target.value;
+//       let todoID = e.target.parentNode.id;
+//       editTodo(newInfo, todoID);
+//     }
+//     todoDisplay.renderTodos();
+//   }
+
+// })();
+
+const editTodoDisplay = (function() {
+  const todoItems = document.querySelectorAll('.something');
+  console.log(todoItems);
+  todoItems.forEach(todo => todo.addEventListener('submit', editTodoAndRender));
+  
+    
+  function editTodoAndRender(e){
+    e.preventDefault();
+      console.log(e.target.childNodes);
+    //   let newInfo = formElements[1].value;
+    //   let todoID = e.target.id;
+    //   editTodo(newInfo, todoID);
+    
+    // todoDisplay.renderTodos();
+  }
+
+})();
+
+export {listDisplay, todosDisplay, selectedList, editTodoDisplay};

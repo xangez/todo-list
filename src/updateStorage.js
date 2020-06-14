@@ -19,17 +19,32 @@ function addTodo(value) {
   }
 }
 
-// function editTodo(info, ID) {
-//   for (let i=0; i<allLists.length; i++) {
-//     if (allLists[i].id == selectedList){
-//       allLists[i].todos[ID] = info;
-//     }
-//   }
-
-// }
 
 function updateStorage() {
   localStorage.setItem('allLists', JSON.stringify(allLists))
 }
 
-export {addList, addTodo, selectedList};
+
+
+function editTodo(info, ID) {
+  for (let i=0; i<allLists.length; i++) {
+    if (allLists[i].id == selectedList){
+      allLists[i].todos[ID].info = info;
+      updateStorage();
+    }
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+export {addList, addTodo, selectedList, editTodo};
