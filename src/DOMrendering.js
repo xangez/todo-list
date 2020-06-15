@@ -1,5 +1,5 @@
 import {allLists} from './storage.js';
-import {addList, addTodo, editTodo} from './updateStorage.js'
+import {addList, addTodo, editTodo, editChecked} from './updateStorage.js'
 
 let selectedList = allLists[0].id;
 
@@ -102,11 +102,15 @@ const todosDisplay = (function() {
   
       const todoFormElement = todoElement.querySelector('.todo-item');
       todoFormElement.id = index;
+
+      const todoCheckbox = todoElement.querySelector('.todo-checkbox');
+      todoCheckbox.checked = todo.checked;
+      todoCheckbox.addEventListener('click', editCheckedController)
   
       const todoText = todoElement.querySelector('.todo-text');
       todoText.value = todo.info;
 
-      todoText.addEventListener('blur', editTodoAndRender);
+      todoText.addEventListener('blur', editTodoController);
   
       todoContainer.appendChild(todoElement);
     });
@@ -124,13 +128,16 @@ const todosDisplay = (function() {
   }
     
 
-  function editTodoAndRender(e){
-    e.preventDefault();
+  function editTodoController(e){
       let newInfo = e.target.value;
       let todoID = e.target.parentNode.id;
       editTodo(newInfo, todoID);
-    
-    renderTodos();
+  }
+
+  function editCheckedController(e) {
+    let newCheckedState = e.target.checked;
+    let todoID = e.target.parentNode.id;
+    editChecked(newCheckedState, todoID);
   }
 
 

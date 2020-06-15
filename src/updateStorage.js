@@ -10,13 +10,10 @@ function addList(value) {
 }
 
 function addTodo(value) {
-  const newTodo = createTodoItem(value);
-  for (let i=0; i<allLists.length; i++) {
-    if (allLists[i].id == selectedList){
-      allLists[i].todos.push(newTodo);
-      updateStorage();
-    }
-  }
+  const newTodo = createTodoItem(value, false);
+  let index = getList();
+  allLists[index].todos.push(newTodo);
+  updateStorage();
 }
 
 
@@ -27,13 +24,24 @@ function updateStorage() {
 
 
 function editTodo(info, ID) {
+  let index = getList();
+  allLists[index].todos[ID].info = info;
+  updateStorage();
+}
+
+
+function editChecked(checkedState, ID) {
+  let index = getList();
+  allLists[index].todos[ID].checked = checkedState;
+  updateStorage();
+}
+
+function getList() {
   for (let i=0; i<allLists.length; i++) {
     if (allLists[i].id == selectedList){
-      allLists[i].todos[ID].info = info;
-      updateStorage();
+      return i;
     }
   }
-
 }
 
 
@@ -42,9 +50,4 @@ function editTodo(info, ID) {
 
 
 
-
-
-
-
-
-export {addList, addTodo, selectedList, editTodo};
+export {addList, addTodo, selectedList, editTodo, editChecked};
