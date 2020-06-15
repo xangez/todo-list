@@ -156,20 +156,27 @@ const dropDownMenuController = (function() {
   const dropDownMenu = document.querySelector('#dropDownMenu');
 
   let menuDisplay = 'none';
+  let currentState = 'clear';
+
+
   function toggleMenu() {
     if (menuDisplay == 'none'){
+      currentState = currentState == 'clear' ? 'clear' : 'clear';
       dropDownMenu.style.display = 'grid';
       menuDisplay = 'grid';
-      addMenuOptionEvents();
-    }
-    else {
-      menuOptions.forEach((option) => {
+
+      menuOptions.forEach(option => {
         option.disabled = false;
         option.style.backgroundColor = 'transparent';
-      })
+      });
+
       menuOptions[0].textContent = 'Clear Completed';
       menuOptions[1].textContent = 'Rename List';
       menuOptions[2].textContent = 'Delete List';
+
+      addMenuOptionEvents();
+    }
+    else {
 
       dropDownMenu.style.display = 'none';
       menuDisplay = 'none';
@@ -183,14 +190,13 @@ const dropDownMenuController = (function() {
     menuOptions[2].addEventListener('click', deleteList);
   }
 
-  let currentState = 'clear'
   function clearCompletedControl() {
     if (currentState == 'clear'){
       menuOptions[0].textContent = 'Confirm?'
       menuOptions[0].style.backgroundColor = 'var(--blue)'
       menuOptions[1].disabled = true;
       menuOptions[2].disabled = true;
-      currentState = 'confirm'
+      currentState = 'confirm';
     }
     else {
       toggleMenu();
