@@ -36,13 +36,6 @@ const listDisplay = (function() {
       listItem.classList = 'list';
       listItem.id = list.id;
       listItem.textContent = list.name;
-  
-      // const listElement = document.importNode(listItemTemplate.content, true);
-      // const listItemInput = listElement.querySelector('.list');
-      // //const listItem = listElement.querySelector('.list');
-      // listItemInput.value = list.name;
-      // listItemInput.disabled = true;
-      // listItemInput.id = list.id;
       listContainer.appendChild(listItem);
     })
   
