@@ -8,7 +8,8 @@
 }
 
 :root {
-  --lines: 1px solid hsl(0, 0%, 86%)
+  --lines: 1px solid hsl(0, 0%, 86%);
+  --blue: hsl(189, 35%, 71%);
 }
 
 html, body {
@@ -36,8 +37,8 @@ button,
 input,
 select {
   font-family: inherit; 
-  font-size: 100%; 
   color: inherit;
+  border: none;
 }
 
 input:focus {
@@ -59,16 +60,6 @@ form, .todo-item {
   align-items: center;
 }
 
-/* input[type=button] {
-  background-color: hsl(195, 53%, 79%);
-  border-radius: 100%;
-  cursor: pointer;
-  height: 0.5em;
-  width: 0.4em;
-  margin-right: 2%;
-} */
-
-
 /* My-lists */
 #togglelists-container {
   width: 30%;
@@ -85,7 +76,7 @@ form, .todo-item {
   height: 42px;
   padding-top: 20px;
   padding-left: 1em;
-  color: hsl(189, 35%, 71%);
+  color: var(--blue);
 }
 
 .list {
@@ -98,7 +89,7 @@ form, .todo-item {
 }
 
 .listFocus {
-  background-color:hsl(189, 35%, 71%);
+  background-color: var(--blue);
   color: rgb(44, 44, 44);
   outline: none;
 }
@@ -118,16 +109,54 @@ form, .todo-item {
   width: 80%;
 }
 
-.openList-name {
+header {
   background-color: rgb(231, 231, 231);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
   margin: 0;
-  padding-bottom: 15px;
-  padding-left: 1em;
-  padding-top: 20px;
+  padding: 20px 0.5em 15px 1em;
   margin-bottom: 10px;
   border-bottom: var(--lines);
   font-size: 2em;
-  color: hsl(189, 30%, 64%);
+  color: var(--blue);
+}
+
+#dropDownBtn {
+  width: 1.3rem;
+  height: 2rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  font-size: 1.3rem;
+}
+
+#dropDownBtn:active {
+  color: hsl(197, 23%, 47%);
+}
+
+#dropDownMenu {
+  background-color: rgb(75, 75, 78);
+  color: white;
+  display: none;
+  grid-template-rows: repeat(3, 1fr);
+  width: 130px; 
+  height: 140px;
+  position: absolute;
+  right: 10px;
+  top: 70px;
+}
+
+.menuOption {
+  font-size: 0.6em;
+  background-color: transparent;
+  margin: 0;
+  border-bottom: 1px solid transparent;
+}
+
+.menuOption:hover {
+  background-color: var(--blue);
+  color: rgb(65, 65, 75);
 }
 
 input[type=checkbox] {

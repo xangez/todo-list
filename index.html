@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>todo-list</title>
+    <script src="https://kit.fontawesome.com/8dc6cd37cf.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
-
   </head>
   <body>
     <div id="main-container">
@@ -18,15 +18,23 @@
       </div>
 
       <div class="openList-container">
-        <p class="openList-name">Drawing</p>
+        <header>
+          <div class="openList-name">Drawing</div>
+          <div id="dropDownBtn"><i class="fas fa-ellipsis-v"></i></div>
+        </header>
+        <div id="dropDownMenu">
+          <button class="menuOption">Clear Completed</button>
+          <button class="menuOption">Rename List</button>
+          <button class="menuOption">Delete List</button>
+        </div>
 
-          <div id="todo-container">
+        <div id="todo-container">
 
-          </div>
-          <form class="todo-item" id="addTodo-form" >
-            <input type="checkbox">
-            <input type="text" id="addTodo-input" placeholder="add todo">
-          </form>
+        </div>
+        <form class="todo-item" id="addTodo-form" >
+          <input type="checkbox">
+          <input type="text" id="addTodo-input" placeholder="add todo">
+        </form>
       </div>
     </div>
 
