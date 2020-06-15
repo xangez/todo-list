@@ -151,13 +151,12 @@ header {
   font-size: 0.6em;
   background-color: transparent;
   margin: 0;
-  border-bottom: 1px solid transparent;
 }
 
-.menuOption:hover {
+/* .menuOption:hover {
   background-color: var(--blue);
-  color: rgb(65, 65, 75);
-}
+  color: rgb(48, 48, 53);
+} */
 
 input[type=checkbox] {
   width: 1.3em;

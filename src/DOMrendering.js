@@ -1,5 +1,5 @@
 import {allLists} from './storage.js';
-import {addList, addTodo, editTodo, editChecked} from './updateStorage.js'
+import {addList, addTodo, editTodo, editChecked, updateCompleted} from './updateStorage.js'
 
 let selectedList = allLists[0].id;
 
@@ -150,6 +150,7 @@ const todosDisplay = (function() {
 const dropDownMenuController = (function() {
   const dropDownBtn = document.querySelector('#dropDownBtn');
   dropDownBtn.addEventListener('click', toggleMenu);
+  const menuOptions = document.querySelectorAll('.menuOption');
 
 
   const dropDownMenu = document.querySelector('#dropDownMenu');
@@ -159,17 +160,56 @@ const dropDownMenuController = (function() {
     if (menuDisplay == 'none'){
       dropDownMenu.style.display = 'grid';
       menuDisplay = 'grid';
+      addMenuOptionEvents();
     }
     else {
+      menuOptions.forEach((option) => {
+        option.disabled = false;
+        option.style.backgroundColor = 'transparent';
+      })
+      menuOptions[0].textContent = 'Clear Completed';
+      menuOptions[1].textContent = 'Rename List';
+      menuOptions[2].textContent = 'Delete List';
+
       dropDownMenu.style.display = 'none';
       menuDisplay = 'none';
     }
   }
 
+  function addMenuOptionEvents() {
 
+    menuOptions[0].addEventListener('click', clearCompletedControl);
+    menuOptions[1].addEventListener('click', renameList);
+    menuOptions[2].addEventListener('click', deleteList);
+  }
+
+  let currentState = 'clear'
+  function clearCompletedControl() {
+    if (currentState == 'clear'){
+      menuOptions[0].textContent = 'Confirm?'
+      menuOptions[0].style.backgroundColor = 'var(--blue)'
+      menuOptions[1].disabled = true;
+      menuOptions[2].disabled = true;
+      currentState = 'confirm'
+    }
+    else {
+      toggleMenu();
+      updateCompleted();
+      todosDisplay.renderTodos();
+      currentState = 'clear';
+    }
+  }
+
+  function renameList() {
+    menuOptions[1].textContent = 'Confirm?'
+  }
+
+  function deleteList() {
+    menuOptions[2].textContent = 'Confirm?'
+  }
 
 })();
 
 
 
-export {listDisplay, todosDisplay, selectedList};
+export {listDisplay, todosDisplay, selectedList, dropDownMenuController};

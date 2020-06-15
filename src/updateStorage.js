@@ -11,7 +11,7 @@ function addList(value) {
 
 function addTodo(value) {
   const newTodo = createTodoItem(value, false);
-  let index = getList();
+  let index = getListIndex();
   allLists[index].todos.push(newTodo);
   updateStorage();
 }
@@ -24,19 +24,31 @@ function updateStorage() {
 
 
 function editTodo(info, ID) {
-  let index = getList();
-  allLists[index].todos[ID].info = info;
+  let i = getListIndex();
+  allLists[i].todos[ID].info = info;
   updateStorage();
 }
 
 
 function editChecked(checkedState, ID) {
-  let index = getList();
-  allLists[index].todos[ID].checked = checkedState;
+  let i = getListIndex();
+  allLists[i].todos[ID].checked = checkedState;
   updateStorage();
 }
 
-function getList() {
+
+function updateCompleted() {
+  let i = getListIndex();
+  let todos = allLists[i].todos;
+  todos.forEach((todo, index) => {
+    if (todo.checked == true){
+      allLists[i].todos.splice(index, 1);
+    }
+  })
+  updateStorage();
+}
+
+function getListIndex() {
   for (let i=0; i<allLists.length; i++) {
     if (allLists[i].id == selectedList){
       return i;
@@ -50,4 +62,4 @@ function getList() {
 
 
 
-export {addList, addTodo, selectedList, editTodo, editChecked};
+export {addList, addTodo, selectedList, editTodo, editChecked, updateCompleted};
