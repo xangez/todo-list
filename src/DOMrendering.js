@@ -26,6 +26,7 @@ const listDisplay = (function() {
     renderMyLists();
   }
 
+  //const listItemTemplate = document.querySelector('#listItem-template');
 
   function renderMyLists() {
     listContainer.innerHTML = '';  
@@ -35,6 +36,13 @@ const listDisplay = (function() {
       listItem.classList = 'list';
       listItem.id = list.id;
       listItem.textContent = list.name;
+  
+      // const listElement = document.importNode(listItemTemplate.content, true);
+      // const listItemInput = listElement.querySelector('.list');
+      // //const listItem = listElement.querySelector('.list');
+      // listItemInput.value = list.name;
+      // listItemInput.disabled = true;
+      // listItemInput.id = list.id;
       listContainer.appendChild(listItem);
     })
   
@@ -110,7 +118,7 @@ const todosDisplay = (function() {
       const todoText = todoElement.querySelector('.todo-text');
       todoText.value = todo.info;
 
-      todoText.addEventListener('blur', editTodoController);
+      todoText.addEventListener('change', editTodoController);
   
       todoContainer.appendChild(todoElement);
     });
@@ -129,6 +137,7 @@ const todosDisplay = (function() {
     
 
   function editTodoController(e){
+    e.preventDefault();
       let newInfo = e.target.value;
       let todoID = e.target.parentNode.id;
       editTodo(newInfo, todoID);
