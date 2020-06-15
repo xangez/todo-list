@@ -102,11 +102,11 @@ const todosDisplay = (function() {
   
       const todoFormElement = todoElement.querySelector('.todo-item');
       todoFormElement.id = index;
-
-      todoFormElement.addEventListener('submit', editTodoAndRender);
   
       const todoText = todoElement.querySelector('.todo-text');
       todoText.value = todo.info;
+
+      todoText.addEventListener('blur', editTodoAndRender);
   
       todoContainer.appendChild(todoElement);
     });
@@ -123,16 +123,15 @@ const todosDisplay = (function() {
     }
   }
     
+
   function editTodoAndRender(e){
     e.preventDefault();
-      const formElements = e.target.childNodes;
-      let newInfo = formElements[3].value;
-      let todoID = e.target.id;
+      let newInfo = e.target.value;
+      let todoID = e.target.parentNode.id;
       editTodo(newInfo, todoID);
     
     renderTodos();
   }
-
 
 
   return {

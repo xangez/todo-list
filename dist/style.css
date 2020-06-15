@@ -20,7 +20,7 @@ body {
   font-size: 20px;
   background-color: hsl(45, 20%, 96%);
   color: rgb(65, 65, 75);
-  font-family: system-ui;
+  font-family: -apple-system, BlinkMacSystemFont;
 }
 
 #main-container {
