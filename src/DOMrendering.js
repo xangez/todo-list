@@ -26,8 +26,6 @@ const listDisplay = (function() {
     renderMyLists();
   }
 
-  //const listItemTemplate = document.querySelector('#listItem-template');
-
   function renderMyLists() {
     listContainer.innerHTML = '';  
   
@@ -147,6 +145,29 @@ const todosDisplay = (function() {
     renderTodos,
   }
   
+})();
+
+const dropDownMenuController = (function() {
+  const dropDownBtn = document.querySelector('#dropDownBtn');
+  dropDownBtn.addEventListener('click', toggleMenu);
+
+
+  const dropDownMenu = document.querySelector('#dropDownMenu');
+
+  let menuDisplay = 'none';
+  function toggleMenu() {
+    if (menuDisplay == 'none'){
+      dropDownMenu.style.display = 'grid';
+      menuDisplay = 'grid';
+    }
+    else {
+      dropDownMenu.style.display = 'none';
+      menuDisplay = 'none';
+    }
+  }
+
+
+
 })();
 
 
