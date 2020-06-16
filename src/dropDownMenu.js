@@ -1,7 +1,6 @@
 import {updateStorage} from './updateStorage.js'
 
 
-
 const dropDownMenu = (function() {
   const dropDownBtn = document.querySelector('#dropDownBtn');
   dropDownBtn.addEventListener('click', toggleMenu);

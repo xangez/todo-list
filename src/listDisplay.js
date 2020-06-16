@@ -1,9 +1,14 @@
-import {allLists} from './storage.js';
 import {updateStorage} from './updateStorage.js'
 import {todosDisplay} from './todosDisplay.js'
 
 
 const listDisplay = (function() {
+
+  
+  let allLists;
+  function getAllLists() {
+    allLists = JSON.parse(localStorage.getItem("allLists"));
+  }
 
   const listContainer = document.querySelector('#list-container');
   listContainer.addEventListener('click', toggleLists);
@@ -28,6 +33,7 @@ const listDisplay = (function() {
   function renderMyLists() {
     listContainer.innerHTML = '';  
   
+    getAllLists();
     allLists.forEach(list => {
       const listItem = document.createElement('div');
       listItem.classList = 'list';
@@ -61,6 +67,7 @@ const listDisplay = (function() {
   
     openListName.textContent = e.target.textContent;
     todosDisplay.renderTodos();
+
   }
 
   return {

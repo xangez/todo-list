@@ -1,8 +1,11 @@
-import {allLists} from './storage.js';
-
 
 const updateStorage = (function() {
 
+  let allLists;
+  function getAllLists() {
+    allLists = JSON.parse(localStorage.getItem("allLists"));
+    console.log(allLists);
+  }
 
   function createList(name) {
     return {name: name, id: Date.now(), todos:[]}
@@ -14,16 +17,20 @@ const updateStorage = (function() {
   }
 
 
-
   function addList(value) {
     const newList = createList(value);
+
+    getAllLists();
     allLists.push(newList);
     updateStorage();
   }
   
   function addTodo(value) {
+    getAllLists();
+
     const newTodo = createTodoItem(value, false);
     let index = getListIndex();
+
     allLists[index].todos.push(newTodo);
     updateStorage();
   }
@@ -43,6 +50,8 @@ const updateStorage = (function() {
   
   
   function editChecked(checkedState, ID) {
+    getAllLists();
+
     let i = getListIndex();
     allLists[i].todos[ID].checked = checkedState;
     updateStorage();
@@ -50,6 +59,9 @@ const updateStorage = (function() {
   
   
   function updateCompleted() {
+    getAllLists();
+
+
     let i = getListIndex();
     let todos = allLists[i].todos;
     todos.forEach((todo, index) => {
@@ -62,7 +74,7 @@ const updateStorage = (function() {
   
   function getListIndex() {
     for (let i=0; i<allLists.length; i++) {
-      if (allLists[i].id == localStorage.getItem('selectedList.ID')){
+      if (allLists[i].id == localStorage.getItem("selectedList.ID")){
         return i;
       }
     }

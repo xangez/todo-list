@@ -1,10 +1,15 @@
-import {allLists} from './storage.js';
 import {updateStorage} from './updateStorage.js'
 
 
 
 
 const todosDisplay = (function() {
+
+  let allLists;
+  function getAllLists() {
+    allLists = JSON.parse(localStorage.getItem("allLists"));
+  }
+
 
   const todoContainer = document.querySelector('#todo-container');  
   const todoItemTemplate = document.querySelector('#todoItem-template');
@@ -54,6 +59,7 @@ const todosDisplay = (function() {
   
   
   function getTodos() {
+    getAllLists();
     for (let i=0; i<allLists.length; i++) {
       if (allLists[i].id == localStorage.getItem('selectedList.ID')) {
          return allLists[i].todos;
