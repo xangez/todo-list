@@ -1,4 +1,4 @@
-import {allLists, selectedList} from './storage.js';
+import {allLists} from './storage.js';
 import {updateStorage} from './updateStorage.js'
 
 
@@ -27,6 +27,9 @@ const todosDisplay = (function() {
   function renderTodos() {
     todoContainer.innerHTML = '';
     let selectedlistTodos = getTodos();
+    if (selectedlistTodos == []) {
+      return;
+    }
   
     selectedlistTodos.forEach((todo, index) => {
       const todoElement = document.importNode(todoItemTemplate.content, true);
@@ -52,7 +55,7 @@ const todosDisplay = (function() {
   
   function getTodos() {
     for (let i=0; i<allLists.length; i++) {
-      if (allLists[i].id == selectedList) {
+      if (allLists[i].id == localStorage.getItem('selectedList.ID')) {
          return allLists[i].todos;
       }
     }

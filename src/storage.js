@@ -9,7 +9,7 @@ const sampleLists = [
 let allLists = JSON.parse(localStorage.getItem('allLists')) || sampleLists;
 console.log(allLists);
 
-let selectedList = allLists[0].id;
+let selectedListID = localStorage.getItem('selectedList.ID');
+console.log(selectedListID);
 
-
-export {allLists, selectedList};
+export {allLists};

@@ -1,4 +1,4 @@
-import {allLists, selectedList} from './storage.js';
+import {allLists} from './storage.js';
 
 
 const updateStorage = (function() {
@@ -30,7 +30,7 @@ const updateStorage = (function() {
   
   
   function updateStorage() {
-    localStorage.setItem('allLists', JSON.stringify(allLists))
+    localStorage.setItem('allLists', JSON.stringify(allLists));
   }
   
   
@@ -62,14 +62,14 @@ const updateStorage = (function() {
   
   function getListIndex() {
     for (let i=0; i<allLists.length; i++) {
-      if (allLists[i].id == selectedList){
+      if (allLists[i].id == localStorage.getItem('selectedList.ID')){
         return i;
       }
     }
   }
   
   return {
-    addList, addTodo, editTodo, editChecked, updateCompleted,
+    addList, addTodo, editTodo, editChecked, updateCompleted, updateStorage,
   }
   
 
