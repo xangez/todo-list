@@ -177,5 +177,20 @@ input[type=checkbox]:checked {
   border: 1px solid rgb(126, 126, 126);
 }
 
+@media (max-width: 500px) {
+  /* #togglelists-container {
+    display: none;
+  }
+  .openList-container {
+    width: 100%;
+  } */
 
+  #togglelists-container {
+    width: 100%;
+  }
+  .openList-container {
+    display: none;
+  }
+
+}
 
