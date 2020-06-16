@@ -1,4 +1,4 @@
-import {allLists} from './storage.js';
+import {allLists, selectedList} from './storage.js';
 import {updateStorage} from './updateStorage.js'
 
 
@@ -19,7 +19,7 @@ const todosDisplay = (function() {
     if (addTodoInput.value == '' || null){
       return;
     }
-    addTodo(addTodoInput.value);
+    updateStorage.addTodo(addTodoInput.value);
     renderTodos();
   }
   
@@ -63,13 +63,13 @@ const todosDisplay = (function() {
     e.preventDefault();
       let newInfo = e.target.value;
       let todoID = e.target.parentNode.id;
-      editTodo(newInfo, todoID);
+      updateStorage.editTodo(newInfo, todoID);
   }
 
   function editCheckedController(e) {
     let newCheckedState = e.target.checked;
     let todoID = e.target.parentNode.id;
-    editChecked(newCheckedState, todoID);
+    updateStorage.editChecked(newCheckedState, todoID);
   }
 
 

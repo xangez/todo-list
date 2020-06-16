@@ -1,5 +1,7 @@
 
-import {listDisplay, todosDisplay, selectedList} from './DOMrendering.js';
+import {listDisplay} from './listDisplay.js';
+import {todosDisplay} from './todosDisplay.js';
+
 
 (function() {
 

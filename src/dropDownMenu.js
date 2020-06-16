@@ -54,7 +54,7 @@ const dropDownMenu = (function() {
     }
     else {
       toggleMenu();
-      updateCompleted();
+      updateStorage.updateCompleted();
       todosDisplay.renderTodos();
     }
   }
@@ -87,3 +87,5 @@ const dropDownMenu = (function() {
 
 
 })();
+
+export {dropDownMenu}

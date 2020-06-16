@@ -1,6 +1,6 @@
 import {allLists} from './storage.js';
 import {updateStorage} from './updateStorage.js'
-
+import {todosDisplay} from './todosDisplay.js'
 
 
 const listDisplay = (function() {
@@ -9,19 +9,19 @@ const listDisplay = (function() {
   listContainer.addEventListener('click', toggleLists);
   
   const addListForm = document.querySelector('#addList-form');
-  addListForm.addEventListener('submit', addListAndRender);
+  addListForm.addEventListener('submit', addListController);
   
   const addListInput = document.querySelector('#addList-input');
 
   const openListName = document.querySelector('.openList-name');
 
 
-  function addListAndRender(e) {
+  function addListController(e) {
     e.preventDefault();
     if (addListInput.value == '' || null){
       return;
     }
-    addList(addListInput.value);
+    updateStorage.addList(addListInput.value);
     renderMyLists();
   }
 
