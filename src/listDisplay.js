@@ -45,7 +45,7 @@ const listDisplay = (function() {
     addListInput.value = null;
   
     //refocus previous selected list
-    const previousSelectedList = document.getElementById(localStorage.getItem('selectedList.ID'));
+    const previousSelectedList = document.getElementById(localStorage.getItem("selectedList.ID"));
     previousSelectedList.classList.add('listFocus');
   
   }
@@ -57,7 +57,7 @@ const listDisplay = (function() {
       list.classList.remove('listFocus');
     });
   
-    localStorage.setItem('selectedList.ID', e.target.id);
+    localStorage.setItem("selectedList.ID", e.target.id);
 
   
   

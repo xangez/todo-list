@@ -1,5 +1,6 @@
 import {listDisplay} from './listDisplay.js';
 import {todosDisplay} from './todosDisplay.js';
+import {dropDownMenu} from './dropDownMenu.js';
 
 const main = (function() {
 
@@ -36,6 +37,8 @@ const main = (function() {
 
 
   todosDisplay.renderTodos();
+
+  dropDownMenu;
 
   
 })();
