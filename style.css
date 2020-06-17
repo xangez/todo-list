@@ -117,7 +117,7 @@ header {
 }
 
 #dropDownBtn:hover {
-  border: 1px solid hsl(225, 6%, 76%);
+  border: 1px solid var(--blue);
 }
 
 #dropDownMenu {
@@ -143,19 +143,29 @@ header {
 
 .menuOption:hover {
   background-color: var(--blue) !important; 
-  color: rgb(48, 48, 53);
 }
 
 
 /* input and form styling */
 
+.noHover{
+  pointer-events: none;
+}
+
+.hidden {
+  display: none;
+}
+
 input:focus {
   outline: none;
 }
 
-#addList-input, #addTodo-input {
+input {
   border: none;
   background-color: transparent;
+}
+
+#addList-input, #addTodo-input {
   height: 2.5em;
   font-size: 0.7em;
   width: 100%;
@@ -163,8 +173,6 @@ input:focus {
 }
 
 .todo-text {
-  border: none;
-  background-color: transparent;
   height: 2.5em;
   font-size: 0.7em;
 }
@@ -183,7 +191,7 @@ form, .todo-item {
   position: relative;
 }
 
-.addInfoBtn {
+.addDescBtn {
   width: 20px;
   color: var(--blue);
   font-family: 'Noto Serif', serif;
@@ -195,14 +203,14 @@ form, .todo-item {
   cursor: pointer;
 }
 
-.addInfoBtn:hover {
+.addDescBtn:hover {
   color: var(--darkblue);
 }
 
-.descriptionBox {
+/* .descriptionBox {
   font-size: 0.6em;
   padding-bottom: 0.4em;
-}
+} */
 
 /* .todo-item {
   margin-left: 1em;
@@ -230,20 +238,4 @@ input[type=checkbox]:checked {
 }
 
 
-@media (max-width: 500px) {
-  /* #togglelists-container {
-    display: none;
-  }
-  .openList-container {
-    width: 100%;
-  } */
-
-  #togglelists-container {
-    width: 100vw;
-  }
-  .openList-container {
-    display: none;
-  }
-
-}
 
