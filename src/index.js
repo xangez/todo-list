@@ -1,7 +1,7 @@
 import { listDisplay } from "./listDisplay.js";
 import { todosDisplay } from "./todosDisplay.js";
 import { dropDownMenu } from "./dropDownMenu.js";
-import { storage } from './storage.js'
+import { storage } from "./storage.js"
 
 const main = (function () {
 
@@ -10,8 +10,6 @@ const main = (function () {
 
   listDisplay.renderMyLists();
   listDisplay.changeListTitleDisplay(storage.getListName());
-
-  listDisplay.refocusPreviousList();
 
   todosDisplay.renderTodos();
 

@@ -1,4 +1,4 @@
-import { storage } from './storage.js'
+import { storage } from "./storage.js";
 
 const updateStorage = (function () {
 
@@ -60,6 +60,18 @@ const updateStorage = (function () {
     updateStorage();
   }
 
+  function deleteList() {
+    allLists = storage.getAllLists();
+    let i = getListIndex();
+    allLists.splice(i, 1);
+    updateStorage();
+    updateSelectedList();
+  }
+
+  function updateSelectedList() {
+    localStorage.setItem("selectedList.ID", allLists[0].id);
+  }
+
   function getListIndex() {
     for (let i = 0; i < allLists.length; i++) {
       if (allLists[i].id == storage.getSelectedList()) {
@@ -75,6 +87,7 @@ const updateStorage = (function () {
     editChecked,
     updateCompleted,
     updateStorage,
+    deleteList,
   };
 })();
 

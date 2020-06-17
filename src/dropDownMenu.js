@@ -1,5 +1,7 @@
 import { updateStorage } from "./updateStorage.js";
+import { storage } from "./storage.js";
 import { todosDisplay } from "./todosDisplay.js";
+import { listDisplay } from "./listDisplay.js";
 
 const dropDownMenu = (function () {
   const dropDownBtn = document.querySelector("#dropDownBtn");
@@ -40,7 +42,7 @@ const dropDownMenu = (function () {
 
   function clearCompletedControl() {
     if (currentState == 1) {
-      menuOptions[0].textContent = "Confirm?";
+      menuOptions[0].textContent = "Confirm Clear?";
       menuOptions[0].style.backgroundColor = "var(--blue)";
       toggleDisabled(0);
       currentState = 2;
@@ -53,17 +55,30 @@ const dropDownMenu = (function () {
 
   function renameList() {
     menuOptions[1].textContent = "Confirm?";
+    menuOptions[1].style.backgroundColor = "var(--blue)";
+    toggleDisabled(1);
   }
 
   function deleteList() {
-    menuOptions[2].textContent = "Confirm?";
+    if (currentState == 1) {
+      menuOptions[2].textContent = "Confirm Delete?";
+      menuOptions[2].style.backgroundColor = "var(--blue)";
+      toggleDisabled(2);
+      currentState = 2;
+    } else {
+      toggleMenu();
+      updateStorage.deleteList();
+      listDisplay.renderMyLists();
+      todosDisplay.renderTodos();
+      listDisplay.changeListTitleDisplay(storage.getListName());
+    }
   }
 
   function toggleDisabled(selectedOption) {
     if (selectedOption == "reEnable") {
       menuOptions.forEach((option) => {
         option.disabled = false;
-        option.style.backgroundColor = "transparent";
+        option.style.backgroundColor = "var(--black)";
       });
     } else {
       menuOptions.forEach((option, index) => {

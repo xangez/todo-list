@@ -1,6 +1,6 @@
 import { updateStorage } from "./updateStorage.js";
 import { todosDisplay } from "./todosDisplay.js";
-import { storage } from './storage.js'
+import { storage } from "./storage.js"
 
 const listDisplay = (function () {
   const listContainer = document.querySelector("#list-container");
@@ -11,7 +11,7 @@ const listDisplay = (function () {
 
   const addListInput = document.querySelector("#addList-input");
 
-  const openListName = document.querySelector(".openList-name");
+  const listTitle = document.querySelector(".openList-name");
 
   function addListController(e) {
     e.preventDefault();
@@ -56,13 +56,12 @@ const listDisplay = (function () {
       e.target.classList.add("listFocus");
     }
 
-
     changeListTitleDisplay(e.target.textContent);
     todosDisplay.renderTodos();
   }
 
   function changeListTitleDisplay(name) {
-    openListName.textContent = name;
+    listTitle.textContent = name;
   }
 
   return {
