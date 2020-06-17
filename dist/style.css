@@ -11,6 +11,7 @@
   --lines: 1px solid hsl(0, 0%, 86%);
   --blue: hsl(189, 35%, 71%);
   --black: hsl(240, 2%, 30%);
+  --darkblue: hsl(197, 23%, 47%);
 }
 
 html, body {
@@ -95,10 +96,10 @@ header {
 
 #listTitle {
   white-space: nowrap;   
-  font-size: inherit;
+  /* font-size: inherit;
   color: inherit;
   background-color: transparent;
-  border: none;
+  border: none; */
 }
 
 #dropDownBtn {
@@ -112,7 +113,7 @@ header {
 }
 
 #dropDownBtn:active {
-  color: hsl(197, 23%, 47%);
+  color: var(--darkblue);
 }
 
 #dropDownBtn:hover {
@@ -140,10 +141,10 @@ header {
   margin: 0;
 }
 
-/* .menuOption:hover {
-  background-color: var(--blue);
+.menuOption:hover {
+  background-color: var(--blue) !important; 
   color: rgb(48, 48, 53);
-} */
+}
 
 
 /* input and form styling */
@@ -166,7 +167,6 @@ input:focus {
   background-color: transparent;
   height: 2.5em;
   font-size: 0.7em;
-  width: 100%;
 }
 
 form, .todo-item {
@@ -191,6 +191,12 @@ form, .todo-item {
   position: absolute;
   right: 0;
   margin-top: 0.2em;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.addInfoBtn:hover {
+  color: var(--darkblue);
 }
 
 .descriptionBox {

@@ -61,7 +61,7 @@ const listDisplay = (function () {
   }
 
   function changeListTitle(name) {
-    listTitle.value = name;
+    listTitle.textContent = name;
   }
 
   return {
