@@ -1,57 +1,50 @@
-import {updateStorage} from './updateStorage.js'
-import {todosDisplay} from './todosDisplay.js'
+import { updateStorage } from "./updateStorage.js";
+import { todosDisplay } from "./todosDisplay.js";
 
-const dropDownMenu = (function() {
-  const dropDownBtn = document.querySelector('#dropDownBtn');
-  dropDownBtn.addEventListener('click', toggleMenu);
-  const menuOptions = document.querySelectorAll('.menuOption');
+const dropDownMenu = (function () {
+  const dropDownBtn = document.querySelector("#dropDownBtn");
+  dropDownBtn.addEventListener("click", toggleMenu);
+  const menuOptions = document.querySelectorAll(".menuOption");
 
+  const dropDownMenu = document.querySelector("#dropDownMenu");
 
-  const dropDownMenu = document.querySelector('#dropDownMenu');
-
-  let menuDisplay = 'none';
+  let menuDisplay = "none";
   let currentState = 1;
 
-
   function toggleMenu() {
-    if (menuDisplay == 'none'){
-      dropDownMenu.style.display = 'grid';
-      menuDisplay = 'grid';
+    if (menuDisplay == "none") {
+      dropDownMenu.style.display = "grid";
+      menuDisplay = "grid";
 
-      toggleDisabled('reEnable')
+      toggleDisabled("reEnable");
       refreshOptions();
       addMenuOptionEvents();
-    }
-    else {
-
-      dropDownMenu.style.display = 'none';
-      menuDisplay = 'none';
+    } else {
+      dropDownMenu.style.display = "none";
+      menuDisplay = "none";
     }
   }
 
   function refreshOptions() {
     currentState = 1;
-    menuOptions[0].textContent = 'Clear Completed';
-    menuOptions[1].textContent = 'Rename List';
-    menuOptions[2].textContent = 'Delete List';
-
+    menuOptions[0].textContent = "Clear Completed";
+    menuOptions[1].textContent = "Rename List";
+    menuOptions[2].textContent = "Delete List";
   }
 
   function addMenuOptionEvents() {
-
-    menuOptions[0].addEventListener('click', clearCompletedControl);
-    menuOptions[1].addEventListener('click', renameList);
-    menuOptions[2].addEventListener('click', deleteList);
+    menuOptions[0].addEventListener("click", clearCompletedControl);
+    menuOptions[1].addEventListener("click", renameList);
+    menuOptions[2].addEventListener("click", deleteList);
   }
 
   function clearCompletedControl() {
-    if (currentState == 1){
-      menuOptions[0].textContent = 'Confirm?'
-      menuOptions[0].style.backgroundColor = 'var(--blue)'
+    if (currentState == 1) {
+      menuOptions[0].textContent = "Confirm?";
+      menuOptions[0].style.backgroundColor = "var(--blue)";
       toggleDisabled(0);
       currentState = 2;
-    }
-    else {
+    } else {
       toggleMenu();
       updateStorage.updateCompleted();
       todosDisplay.renderTodos();
@@ -59,32 +52,28 @@ const dropDownMenu = (function() {
   }
 
   function renameList() {
-    menuOptions[1].textContent = 'Confirm?'
+    menuOptions[1].textContent = "Confirm?";
   }
 
   function deleteList() {
-    menuOptions[2].textContent = 'Confirm?'
+    menuOptions[2].textContent = "Confirm?";
   }
 
-
   function toggleDisabled(selectedOption) {
-    if (selectedOption == 'reEnable') {
-      menuOptions.forEach(option => {
+    if (selectedOption == "reEnable") {
+      menuOptions.forEach((option) => {
         option.disabled = false;
-        option.style.backgroundColor = 'transparent';
-       });
-    }
-    else {
+        option.style.backgroundColor = "transparent";
+      });
+    } else {
       menuOptions.forEach((option, index) => {
         if (selectedOption !== index) {
           option.disabled = true;
         }
       });
     }
-
   }
-
-
 })();
 
-export {dropDownMenu}
+export { dropDownMenu };
+
