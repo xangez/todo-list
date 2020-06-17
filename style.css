@@ -10,6 +10,7 @@
 :root {
   --lines: 1px solid hsl(0, 0%, 86%);
   --blue: hsl(189, 35%, 71%);
+  --black: hsl(240, 2%, 30%);
 }
 
 html, body {
@@ -20,7 +21,7 @@ html, body {
 body {
   font-size: 20px;
   background-color: hsl(45, 20%, 96%);
-  color: rgb(65, 65, 75);
+  color: hsl(240, 7%, 27%);
   font-family: -apple-system, BlinkMacSystemFont;
 }
 
@@ -66,7 +67,7 @@ form, .todo-item {
   max-width: 300px;
   min-width: 200px;
   padding-top: 1em;
-  background-color: rgb(46, 46, 46);
+  background-color: hsl(0, 0%, 18%);
   border-right: var(--lines) ;
 }
 
@@ -90,7 +91,7 @@ form, .todo-item {
 
 .listFocus {
   background-color: var(--blue);
-  color: rgb(44, 44, 44);
+  color: hsl(0, 0%, 17%);
   outline: none;
 }
 
@@ -100,7 +101,7 @@ form, .todo-item {
 
 #addList-input {
   font-size: 0.8em;
-  color:hsl(0, 0%, 87%);
+  color: hsl(0, 0%, 87%);
 }
 
 
@@ -110,7 +111,7 @@ form, .todo-item {
 }
 
 header {
-  background-color: rgb(231, 231, 231);
+  background-color: hsl(0, 0%, 91%);
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -123,20 +124,25 @@ header {
 }
 
 #dropDownBtn {
-  width: 1.3rem;
-  height: 2rem;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
+  width: 2rem;
+  line-height: 2rem;
   font-size: 1.3rem;
+  border-radius: 50%;
+  text-align: center;
+  border: 1px solid transparent;
+
 }
 
 #dropDownBtn:active {
   color: hsl(197, 23%, 47%);
 }
 
+#dropDownBtn:hover {
+  border: 1px solid hsl(225, 6%, 76%);
+}
+
 #dropDownMenu {
-  background-color: rgb(75, 75, 78);
+  background-color: hsl(240, 2%, 30%);
   color: white;
   display: none;
   grid-template-rows: repeat(3, 1fr);
@@ -148,8 +154,8 @@ header {
 }
 
 .menuOption {
+  background-color: var(--black);
   font-size: 0.6em;
-  background-color: transparent;
   margin: 0;
 }
 
@@ -164,7 +170,7 @@ input[type=checkbox] {
   background-color: transparent;
   border-radius: 50%;
   vertical-align: middle;
-  border: 1px solid rgb(167, 167, 167);
+  border: 1px solid hsl(0, 0%, 65%);
   -webkit-appearance: none;
   outline: none;
   cursor: pointer;
@@ -173,8 +179,8 @@ input[type=checkbox] {
 }
 
 input[type=checkbox]:checked {
-  background-color: rgb(187, 223, 230);
-  border: 1px solid rgb(126, 126, 126);
+  background-color: hsl(190, 46%, 82%);
+  border: 1px solid hsl(0, 0%, 49%);
 }
 
 @media (max-width: 500px) {
@@ -186,7 +192,7 @@ input[type=checkbox]:checked {
   } */
 
   #togglelists-container {
-    width: 100%;
+    width: 100vw;
   }
   .openList-container {
     display: none;
