@@ -1,7 +1,7 @@
 import { updateStorage } from "./updateStorage.js";
 import { storage } from "./storage.js";
 
-const todosDisplay = (function() {
+const todosDisplay = (function () {
   const todoContainer = document.querySelector("#todo-container");
   const todoItemTemplate = document.querySelector("#todoItem-template");
 

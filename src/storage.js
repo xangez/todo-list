@@ -68,7 +68,7 @@ const storage = (function() {
     getAllLists,
     getSelectedList,
     getTodos,
-    getListName
+    getListName,
   }
 
 })();

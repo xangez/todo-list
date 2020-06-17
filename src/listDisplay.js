@@ -11,7 +11,7 @@ const listDisplay = (function () {
 
   const addListInput = document.querySelector("#addList-input");
 
-  const listTitle = document.querySelector(".openList-name");
+  const listTitle = document.querySelector("#listTitle");
 
   function addListController(e) {
     e.preventDefault();
@@ -56,17 +56,17 @@ const listDisplay = (function () {
       e.target.classList.add("listFocus");
     }
 
-    changeListTitleDisplay(e.target.textContent);
+    changeListTitle(e.target.textContent);
     todosDisplay.renderTodos();
   }
 
-  function changeListTitleDisplay(name) {
-    listTitle.textContent = name;
+  function changeListTitle(name) {
+    listTitle.value = name;
   }
 
   return {
     renderMyLists,
-    changeListTitleDisplay,
+    changeListTitle,
     refocusPreviousList,
   };
 })();

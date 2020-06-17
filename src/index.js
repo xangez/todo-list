@@ -9,7 +9,7 @@ const main = (function () {
   storage.onloadGetSelectedList();
 
   listDisplay.renderMyLists();
-  listDisplay.changeListTitleDisplay(storage.getListName());
+  listDisplay.changeListTitle(storage.getListName());
 
   todosDisplay.renderTodos();
 
