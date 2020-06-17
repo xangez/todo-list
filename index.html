@@ -19,7 +19,7 @@
 
       <div class="openList-container">
         <header>
-          <div class="openList-name">Drawing</div>
+          <input type="text" id="listTitle" readonly></input>
           <div id="dropDownBtn"><i class="fas fa-ellipsis-v"></i></div>
         </header>
         <div id="dropDownMenu">
@@ -42,7 +42,11 @@
     <template id="todoItem-template">
       <div class="todo-item">
         <input type="checkbox" class="todo-checkbox">
-        <input type="text" class='todo-text'>
+        <div class="todoItemBox">
+          <input type="text" class='todo-text'>
+          <div class="addInfoBtn">&#9432</i></div>
+        </div>
+        <div class="line"></div>
       </div>  
     </template>
 
