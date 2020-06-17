@@ -41,6 +41,9 @@ const todosDisplay = (function () {
 
       todoText.addEventListener("change", editTodoController);
 
+      const addDescBtn = todoElement.querySelector(".addDescBtn");
+      addDescBtn.addEventListener("click", editDescription);
+
       todoContainer.appendChild(todoElement);
     });
 
@@ -58,6 +61,16 @@ const todosDisplay = (function () {
     let newCheckedState = e.target.checked;
     let todoID = e.target.parentNode.id;
     updateStorage.editChecked(newCheckedState, todoID);
+  }
+
+  const descriptionTemplate = document.querySelector("#descriptionTemplate");
+  function editDescription(e) {
+    const descriptionElement = document.importNode(descriptionTemplate.content, true);
+    const descriptionInput = descriptionElement.querySelector(".descriptionInput");
+    const descriptionDate = descriptionElement.querySelector(".descriptionDate");
+    e.target.parentNode.appendChild(descriptionInput);
+    e.target.parentNode.appendChild(descriptionDate);
+
   }
 
   return {

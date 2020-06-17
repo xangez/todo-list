@@ -79,11 +79,13 @@ const dropDownMenu = (function () {
       menuOptions.forEach((option) => {
         option.disabled = false;
         option.style.backgroundColor = "var(--black)";
+        option.classList.remove("noHover");
       });
     } else {
       menuOptions.forEach((option, index) => {
         if (selectedOption !== index) {
           option.disabled = true;
+          option.classList.add("noHover");
         }
       });
     }
