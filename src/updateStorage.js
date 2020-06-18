@@ -3,8 +3,9 @@ import { todosDisplay } from "./todosDisplay.js";
 
 const updateStorage = (function () {
 
-  let allLists;
-  let selectedList;
+  let allLists = getAllLists();
+  let selectedList = getSelectedList();
+
   function createList(name) {
     return { name: name, id: Date.now(), todos: [] };
   }
@@ -119,7 +120,6 @@ const updateStorage = (function () {
   }
  
   function getTodos() {
-    selectedList = getSelectedList();
     for (let i = 0; i < allLists.length; i++) {
       if (allLists[i].id == selectedList) {
         return allLists[i].todos;

@@ -46,8 +46,6 @@ const listDisplay = (function () {
       list.classList.remove("listFocus");
     });
 
-    localStorage.setItem("selectedList.ID", e.target.id);
-
     if (e.target.classList == "list") {
       e.target.classList.add("listFocus");
     }

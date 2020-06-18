@@ -6,10 +6,10 @@ const todosDisplay = (function () {
 
   //todo form
   const addTodoForm = document.querySelector("#addTodo-form");
-  addTodoForm.addEventListener("submit", addTodoAndRender);
+  addTodoForm.addEventListener("submit", addTodoListener);
   const addTodoInput = document.querySelector("#addTodo-input");
 
-  function addTodoAndRender(e) {
+  function addTodoListener(e) {
     e.preventDefault();
     if (addTodoInput.value == "" || null) {
       return;

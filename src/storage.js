@@ -43,4 +43,3 @@ const storage = (function() {
 
 export { storage }
 
-//nothing
