@@ -1,17 +1,18 @@
 import { listDisplay } from "./listDisplay.js";
 import { todosDisplay } from "./todosDisplay.js";
 import { dropDownMenu } from "./dropDownMenu.js";
-import { storage } from "./storage.js"
+import { storage } from "./storage.js";
+import { updateStorage } from "./updateStorage.js";
 
 const main = (function () {
 
-  storage.onloadGetAllLists();
+  let allLists = storage.onloadGetAllLists();
   storage.onloadGetSelectedList();
 
-  listDisplay.renderMyLists();
-  listDisplay.changeListTitle(storage.getListName());
+  listDisplay.renderMyLists(allLists);
+  listDisplay.changeListTitle(updateStorage.getListName());
 
-  todosDisplay.renderTodos();
+  todosDisplay.renderTodos(updateStorage.getTodos());
 
   dropDownMenu;
 })();

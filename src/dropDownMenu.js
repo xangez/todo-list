@@ -1,7 +1,4 @@
 import { updateStorage } from "./updateStorage.js";
-import { todosDisplay } from "./todosDisplay.js";
-import { listDisplay } from "./listDisplay.js";
-import { storage } from "./storage.js";
 
 const dropDownMenu = (function () {
   const dropDownBtn = document.querySelector("#dropDownBtn");
@@ -49,7 +46,6 @@ const dropDownMenu = (function () {
     } else {
       toggleMenu();
       updateStorage.updateCompleted();
-      todosDisplay.renderTodos();
     }
   }
 
@@ -68,9 +64,6 @@ const dropDownMenu = (function () {
     } else {
       toggleMenu();
       updateStorage.deleteList();
-      listDisplay.renderMyLists();
-      todosDisplay.renderTodos();
-      listDisplay.changeListTitle(storage.getListName());
     }
   }
 

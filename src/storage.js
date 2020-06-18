@@ -19,13 +19,13 @@ const storage = (function() {
   ];
 
   let allLists;
-  let selectedList;
 
   function onloadGetAllLists() {
     if (localStorage.getItem("allLists") === null) {
       localStorage.setItem("allLists", JSON.stringify(sampleLists));
     }
     allLists = JSON.parse(localStorage.getItem("allLists"));
+    return allLists;
   }
 
   function onloadGetSelectedList() {
@@ -34,41 +34,9 @@ const storage = (function() {
     }
   }
 
-  function getAllLists() {
-    return JSON.parse(localStorage.getItem("allLists"));
-  }
-
-  function getSelectedList() {
-    return localStorage.getItem("selectedList.ID");
-  }
-
-  function getListName() {
-    selectedList = getSelectedList();
-    for (let i = 0; i < allLists.length; i++) {
-      if (allLists[i].id == selectedList) {
-        return allLists[i].name;
-      }
-    }
-
-  }
- 
-  function getTodos() {
-    allLists = getAllLists();
-    selectedList = getSelectedList();
-    for (let i = 0; i < allLists.length; i++) {
-      if (allLists[i].id == selectedList) {
-        return allLists[i].todos;
-      }
-    }
-  }
-
   return {
     onloadGetAllLists,
     onloadGetSelectedList,
-    getAllLists,
-    getSelectedList,
-    getTodos,
-    getListName,
   }
 
 })();

@@ -1,5 +1,4 @@
 import { updateStorage } from "./updateStorage.js";
-import { storage } from "./storage.js";
 
 const todosDisplay = (function () {
   const todoContainer = document.querySelector("#todo-container");
@@ -16,12 +15,10 @@ const todosDisplay = (function () {
       return;
     }
     updateStorage.addTodo(addTodoInput.value);
-    renderTodos();
   }
 
-  function renderTodos() {
+  function renderTodos(selectedlistTodos) {
     todoContainer.innerHTML = "";
-    let selectedlistTodos = storage.getTodos();
     if (selectedlistTodos == []) {
       return;
     }

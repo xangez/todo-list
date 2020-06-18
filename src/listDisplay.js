@@ -1,6 +1,5 @@
 import { updateStorage } from "./updateStorage.js";
-import { todosDisplay } from "./todosDisplay.js";
-import { storage } from "./storage.js"
+
 
 const listDisplay = (function () {
   const listContainer = document.querySelector("#list-container");
@@ -19,13 +18,12 @@ const listDisplay = (function () {
       return;
     }
     updateStorage.addList(addListInput.value);
-    renderMyLists();
+    addListInput.value = null;
   }
 
-  function renderMyLists() {
+  function renderMyLists(allLists) {
     listContainer.innerHTML = "";
 
-    let allLists = storage.getAllLists();
     allLists.forEach((list) => {
       const listItem = document.createElement("div");
       listItem.classList = "list";
@@ -34,13 +32,11 @@ const listDisplay = (function () {
       listContainer.appendChild(listItem);
     });
 
-    addListInput.value = null;
-
     refocusPreviousList();
   }
 
   function refocusPreviousList() {
-    const previousSelectedList = document.getElementById(storage.getSelectedList());
+    const previousSelectedList = document.getElementById(updateStorage.getSelectedList());
     previousSelectedList.classList.add("listFocus");
   }
 
@@ -56,8 +52,7 @@ const listDisplay = (function () {
       e.target.classList.add("listFocus");
     }
 
-    changeListTitle(e.target.textContent);
-    todosDisplay.renderTodos();
+    updateStorage.toggleSelectedList(e.target.id);
   }
 
   function changeListTitle(name) {
