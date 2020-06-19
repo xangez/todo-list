@@ -45,6 +45,10 @@ const updateStorage = (function () {
     saveList();
   }
 
+  function editDescription(description, date, priority) {
+    console.log(description + date + priority);
+  }
+
   function updateCompleted() {
     let i = getListIndex();
     let todos = allLists[i].todos;
@@ -137,6 +141,7 @@ const updateStorage = (function () {
     addTodo,
     editTodo,
     editChecked,
+    editDescription,
     updateCompleted,
     deleteList,
     toggleSelectedList,

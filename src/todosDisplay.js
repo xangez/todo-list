@@ -68,14 +68,32 @@ const todosDisplay = (function () {
     let selectedTodoItem = e.target.parentNode.parentNode;
     const selectedTodoDesc = selectedTodoItem.querySelector(".descriptionContainer");
     if (selectedTodoDesc.style.display !== "grid") {
+      selectedTodoItem.addEventListener("blur", () => {selectedTodoDesc.style.display = "none"});
       selectedTodoDesc.style.display = "grid";
     } else {
       selectedTodoDesc.style.display = "none";
     }
-    selectedTodoItem.addEventListener("blur", () => selectedTodoDesc.style.display = "none");
+
+
+    //   selectedTodoItem.addEventListener("blur", function(){
+    //     // getInputValues();
+    //     selectedTodoDesc.style.display = "none";
+    //   });
+    // } else {
+    //   // getInputValues();
+    //   selectedTodoDesc.style.display = "none";
+    // }
+
+    // function getInputValues() {
+    //   console.log('hi');
+    //   // let description = selectedTodoDesc.querySelector(".descriptionInput").value;
+    //   // let date = selectedTodoDesc.querySelector(".descriptionDate").value;
+    //   // let priority = selectedTodoDesc.querySelector("select").value; 
+    //   // updateStorage.editDescription(description, date, priority);
+    // }
   }
 
-  
+
 
   return {
     renderTodos,
