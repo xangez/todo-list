@@ -50,8 +50,21 @@
     </template>
 
     <template id="descriptionTemplate">
-      <input type="text" placeholder="description" class="descriptionInput">
-      <input type="date" class="descriptionDate">
+      <div class="descriptionContainer" tabindex="-1">
+        <input type="text" placeholder="description" class="descriptionInput">
+        <input type="date" class="descriptionDate">
+        <label style="font-size: 0.6em">
+          Priority:
+          <select id="priority" style="width:50px;display: inline-block;">
+            <option value="None">None</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="High">High</option>
+          </select>
+        </label>
+
+      </div>
+
     </template>
 
      <script src="main.js"></script>

@@ -65,13 +65,28 @@ const todosDisplay = (function () {
 
   const descriptionTemplate = document.querySelector("#descriptionTemplate");
   function editDescriptionHandler(e) {
+    // event.stopPropagation();
     const descriptionElement = document.importNode(descriptionTemplate.content, true);
-    const descriptionInput = descriptionElement.querySelector(".descriptionInput");
-    const descriptionDate = descriptionElement.querySelector(".descriptionDate");
-    e.target.parentNode.appendChild(descriptionInput);
-    e.target.parentNode.appendChild(descriptionDate);
+    const descriptionContainer = descriptionElement.querySelector('.descriptionContainer');
+    e.target.parentNode.appendChild(descriptionContainer);
+    let selectedTodo = e.target.parentNode.parentNode;
+    selectedTodo.style.backgroundColor = 'var(--grey)';
+    // selectedTodo.focus();
+    // let open = true;
+    // document.addEventListener('click', function(e){
+    //   if(open && e.target !== selectedTodo) {
+    //     descriptionContainer.style.display = "none";
+    //     open = false;
+    //   }
+    //   else if (open == false){
+    //     document.removeEventListener('click');
+    //     open = true;
+    //   }
 
+    // })
   }
+ 
+
 
   return {
     renderTodos,
