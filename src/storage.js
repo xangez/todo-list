@@ -18,25 +18,22 @@ const storage = (function() {
     },
   ];
 
-  let allLists;
-
-  function onloadGetAllLists() {
+  function checkAllLists() {
     if (localStorage.getItem("allLists") === null) {
       localStorage.setItem("allLists", JSON.stringify(sampleLists));
     }
-    allLists = JSON.parse(localStorage.getItem("allLists"));
-    return allLists;
+
   }
 
-  function onloadGetSelectedList() {
+  function checkSelectedList() {
     if (localStorage.getItem("selectedList.ID") === null) {
-      localStorage.setItem("selectedList.ID", allLists[0].id);
+      localStorage.setItem("selectedList.ID", sampleLists[0].id);
     }
   }
 
   return {
-    onloadGetAllLists,
-    onloadGetSelectedList,
+    checkAllLists,
+    checkSelectedList,
   }
 
 })();

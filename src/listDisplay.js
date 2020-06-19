@@ -32,12 +32,11 @@ const listDisplay = (function () {
       listContainer.appendChild(listItem);
     });
 
-    refocusPreviousList();
   }
 
-  function refocusPreviousList() {
-    const previousSelectedList = document.getElementById(updateStorage.getSelectedList());
-    previousSelectedList.classList.add("listFocus");
+  function refocusList(selectedList) {
+    const selectedListElement = document.getElementById(selectedList);
+    selectedListElement.classList.add("listFocus");
   }
 
   function toggleLists(e) {
@@ -60,7 +59,7 @@ const listDisplay = (function () {
   return {
     renderMyLists,
     changeListTitle,
-    refocusPreviousList,
+    refocusList,
   };
 })();
 

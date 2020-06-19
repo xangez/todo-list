@@ -5,15 +5,11 @@ import { storage } from "./storage.js";
 import { updateStorage } from "./updateStorage.js";
 
 const main = (function () {
-
-  let allLists = storage.onloadGetAllLists();
-  storage.onloadGetSelectedList();
-
-  listDisplay.renderMyLists(allLists);
-  listDisplay.changeListTitle(updateStorage.getListName());
-
-  todosDisplay.renderTodos(updateStorage.getTodos());
-
+  storage.checkAllLists();
+  storage.checkSelectedList();
+  updateStorage.onload();
+  listDisplay;
+  todosDisplay;
   dropDownMenu;
 })();
 
