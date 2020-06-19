@@ -64,49 +64,18 @@ const todosDisplay = (function () {
   }
 
 
-
   function editDescriptionHandler(e) {
     let selectedTodoItem = e.target.parentNode.parentNode;
     const selectedTodoDesc = selectedTodoItem.querySelector(".descriptionContainer");
-    if (selectedTodoDesc.style.display == "none") {
+    if (selectedTodoDesc.style.display !== "grid") {
       selectedTodoDesc.style.display = "grid";
     } else {
       selectedTodoDesc.style.display = "none";
     }
-
-    // document.addEventListener('click', function handler(e){
-    //   if (e.target !== selectedTodoItem) {
-    //     selectedTodoDesc.style.display = "none";
-    //     document.removeEventListener('click', handler);
-    //   }
-    // });
+    selectedTodoItem.addEventListener("blur", () => selectedTodoDesc.style.display = "none");
   }
 
-
-  // const descriptionTemplate = document.querySelector("#descriptionTemplate");
-  // function editDescriptionHandler(e) {
-    
-    // const descriptionElement = document.importNode(descriptionTemplate.content, true);
-    // const descriptionContainer = descriptionElement.querySelector('.descriptionContainer');
-    // e.target.parentNode.appendChild(descriptionContainer);
-    // let selectedTodo = e.target.parentNode.parentNode;
-    // selectedTodo.style.backgroundColor = 'var(--lightgrey)';
-    // selectedTodo.focus();
-    // let open = true;
-    // document.addEventListener('click', function(e){
-    //   if(open && e.target !== selectedTodo) {
-    //     descriptionContainer.style.display = "none";
-    //     open = false;
-    //   }
-    //   else if (open == false){
-    //     document.removeEventListener('click');
-    //     open = true;
-    //   }
-
-    // })
-  // }
- 
-
+  
 
   return {
     renderTodos,
