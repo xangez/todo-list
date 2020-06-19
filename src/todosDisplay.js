@@ -6,16 +6,8 @@ const todosDisplay = (function () {
 
   //todo form
   const addTodoForm = document.querySelector("#addTodo-form");
-  addTodoForm.addEventListener("submit", addTodoListener);
+  addTodoForm.addEventListener("submit", addTodoHandler);
   const addTodoInput = document.querySelector("#addTodo-input");
-
-  function addTodoListener(e) {
-    e.preventDefault();
-    if (addTodoInput.value == "" || null) {
-      return;
-    }
-    updateStorage.addTodo(addTodoInput.value);
-  }
 
   function renderTodos(selectedlistTodos) {
     todoContainer.innerHTML = "";
@@ -26,42 +18,53 @@ const todosDisplay = (function () {
     selectedlistTodos.forEach((todo, index) => {
       const todoElement = document.importNode(todoItemTemplate.content, true);
 
-      const todoFormElement = todoElement.querySelector(".todo-item");
-      todoFormElement.id = index;
+      //todoItem div
+      const todoDivElement = todoElement.querySelector(".todo-item");
+      todoDivElement.id = index;
 
+      //checkbox
       const todoCheckbox = todoElement.querySelector(".todo-checkbox");
       todoCheckbox.checked = todo.checked;
-      todoCheckbox.addEventListener("click", editCheckedController);
+      todoCheckbox.addEventListener("click", editCheckedHandler);
 
+      //input
       const todoText = todoElement.querySelector(".todo-text");
       todoText.value = todo.info;
+      todoText.addEventListener("change", editTodoHandler);
 
-      todoText.addEventListener("change", editTodoController);
-
+      //add description button
       const addDescBtn = todoElement.querySelector(".addDescBtn");
-      addDescBtn.addEventListener("click", editDescription);
+      addDescBtn.addEventListener("click", editDescriptionHandler);
 
-      todoContainer.appendChild(todoElement);
+      todoContainer.appendChild(todoDivElement);
     });
 
     addTodoInput.value = null;
   }
 
-  function editTodoController(e) {
+  function addTodoHandler(e) {
+    e.preventDefault();
+    if (addTodoInput.value == "" || null) {
+      return;
+    }
+    updateStorage.addTodo(addTodoInput.value);
+  }
+
+  function editTodoHandler(e) {
     e.preventDefault();
     let newInfo = e.target.value;
     let todoID = e.target.parentNode.id;
     updateStorage.editTodo(newInfo, todoID);
   }
 
-  function editCheckedController(e) {
+  function editCheckedHandler(e) {
     let newCheckedState = e.target.checked;
     let todoID = e.target.parentNode.id;
     updateStorage.editChecked(newCheckedState, todoID);
   }
 
   const descriptionTemplate = document.querySelector("#descriptionTemplate");
-  function editDescription(e) {
+  function editDescriptionHandler(e) {
     const descriptionElement = document.importNode(descriptionTemplate.content, true);
     const descriptionInput = descriptionElement.querySelector(".descriptionInput");
     const descriptionDate = descriptionElement.querySelector(".descriptionDate");
