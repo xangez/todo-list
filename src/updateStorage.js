@@ -35,7 +35,7 @@ const updateStorage = (function () {
 
   function editTodo(info, ID) {
     let i = getListIndex();
-    allLists[i].todos[ID].info = info;
+    allLists[i].todos[Number(ID)].info = info;
     saveList();
   }
 

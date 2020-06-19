@@ -63,14 +63,34 @@ const todosDisplay = (function () {
     updateStorage.editChecked(newCheckedState, todoID);
   }
 
-  const descriptionTemplate = document.querySelector("#descriptionTemplate");
+
+
   function editDescriptionHandler(e) {
-    // event.stopPropagation();
-    const descriptionElement = document.importNode(descriptionTemplate.content, true);
-    const descriptionContainer = descriptionElement.querySelector('.descriptionContainer');
-    e.target.parentNode.appendChild(descriptionContainer);
-    let selectedTodo = e.target.parentNode.parentNode;
-    selectedTodo.style.backgroundColor = 'var(--grey)';
+    let selectedTodoItem = e.target.parentNode.parentNode;
+    const selectedTodoDesc = selectedTodoItem.querySelector(".descriptionContainer");
+    if (selectedTodoDesc.style.display == "none") {
+      selectedTodoDesc.style.display = "grid";
+    } else {
+      selectedTodoDesc.style.display = "none";
+    }
+
+    // document.addEventListener('click', function handler(e){
+    //   if (e.target !== selectedTodoItem) {
+    //     selectedTodoDesc.style.display = "none";
+    //     document.removeEventListener('click', handler);
+    //   }
+    // });
+  }
+
+
+  // const descriptionTemplate = document.querySelector("#descriptionTemplate");
+  // function editDescriptionHandler(e) {
+    
+    // const descriptionElement = document.importNode(descriptionTemplate.content, true);
+    // const descriptionContainer = descriptionElement.querySelector('.descriptionContainer');
+    // e.target.parentNode.appendChild(descriptionContainer);
+    // let selectedTodo = e.target.parentNode.parentNode;
+    // selectedTodo.style.backgroundColor = 'var(--lightgrey)';
     // selectedTodo.focus();
     // let open = true;
     // document.addEventListener('click', function(e){
@@ -84,7 +104,7 @@ const todosDisplay = (function () {
     //   }
 
     // })
-  }
+  // }
  
 
 

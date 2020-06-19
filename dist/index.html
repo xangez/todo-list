@@ -45,22 +45,38 @@
         <div class="todoItemBox">
           <input type="text" class='todo-text'>
           <div class="addDescBtn">&#9432</i></div>
+          <div class="descriptionContainer hidden">
+            <input type="text" placeholder="Description" class="descriptionInput">
+            <label>Due date:<input placeholder="date" type="date" class="descriptionDate"></label>
+            <label>
+              Priority:
+              <select class="priority">
+                <option value="None">None</option>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="High">High</option>
+              </select>
+              
+            </label>
+    
+          </div>
         </div>
       </div>  
     </template>
 
     <template id="descriptionTemplate">
-      <div class="descriptionContainer" tabindex="-1">
-        <input type="text" placeholder="description" class="descriptionInput">
-        <input type="date" class="descriptionDate">
-        <label style="font-size: 0.6em">
+      <div class="descriptionContainer">
+        <input type="text" placeholder="Description" class="descriptionInput">
+        <label>Due date:<input placeholder="date" type="date" class="descriptionDate"></label>
+        <label>
           Priority:
-          <select id="priority" style="width:50px;display: inline-block;">
+          <select class="priority">
             <option value="None">None</option>
             <option value="low">Low</option>
             <option value="medium">Medium</option>
             <option value="High">High</option>
           </select>
+
         </label>
 
       </div>
