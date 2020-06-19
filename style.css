@@ -163,7 +163,7 @@ header {
 
 /* input and form styling */
 
-input:focus {
+:focus {
   outline: none;
 }
 
