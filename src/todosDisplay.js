@@ -32,6 +32,16 @@ const todosDisplay = (function () {
       todoText.value = todo.info;
       todoText.addEventListener("change", editTodoHandler);
 
+      //description box
+      const descriptionInput = todoElement.querySelector(".descriptionInput");
+      descriptionInput.value = todo.description;
+
+      const descriptionDate = todoElement.querySelector(".descriptionDate");
+      descriptionDate.value = todo.date;
+
+      const priority = todoElement.querySelector(".priority");
+      priority.value = todo.priority;
+
       //add description button
       const addDescBtn = todoElement.querySelector(".addDescBtn");
       addDescBtn.addEventListener("click", editDescriptionHandler);
@@ -66,13 +76,14 @@ const todosDisplay = (function () {
 
  function editDescriptionHandler(e) {
     let selectedTodoItem = e.target.parentNode.parentNode;
+    let selectedTodoID = selectedTodoItem.id
     const selectedTodoDesc = selectedTodoItem.querySelector(".descriptionContainer");
     if (selectedTodoDesc.style.display !== "grid") {
       selectedTodoDesc.style.display = "grid";
       document.addEventListener('click', outsideClickListener);
     } else {
      selectedTodoDesc.style.display = "none";
-
+     getDescriptionValues();
     }
 
       let element = selectedTodoItem;
@@ -80,6 +91,7 @@ const todosDisplay = (function () {
           if (!element.contains(event.target) && isVisible(selectedTodoDesc)) { 
             selectedTodoDesc.style.display = 'none';
             removeClickListener();
+            getDescriptionValues();
           }
       }
   
@@ -88,22 +100,22 @@ const todosDisplay = (function () {
       }
   
       const isVisible = elem => !!elem && !!( elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length);
-  }
-
-    // function getDescriptionValues() {
-    //   console.log('hi');
-    //   // let description = selectedTodoDesc.querySelector(".descriptionInput").value;
-    //   // let date = selectedTodoDesc.querySelector(".descriptionDate").value;
-    //   // let priority = selectedTodoDesc.querySelector("select").value; 
-    //   // updateStorage.editDescription(description, date, priority);
-    // }
-  
-
+     
+      function getDescriptionValues() {
+        let description = selectedTodoDesc.querySelector(".descriptionInput").value;
+        let date = selectedTodoDesc.querySelector(".descriptionDate").value;
+        let priority = selectedTodoDesc.querySelector("select").value; 
+        updateStorage.editDescription(selectedTodoID, description, date, priority);
+      }
+    
+    }
 
 
   return {
     renderTodos,
   };
+
+  
 })();
 
 export { todosDisplay };

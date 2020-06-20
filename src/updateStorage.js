@@ -11,8 +11,8 @@ const updateStorage = (function () {
     return { name: name, id: Date.now(), todos: [] };
   }
 
-  function createTodoItem(info, checked) {
-    return { info: info, checked: checked };
+  function createTodoItem(info, checked, description, date, priority) {
+    return { info: info, checked: checked, description: description, date: date, priority: priority};
   }
 
   //change
@@ -25,7 +25,7 @@ const updateStorage = (function () {
   }
 
   function addTodo(value) {
-    const newTodo = createTodoItem(value, false);
+    const newTodo = createTodoItem(value, false, '', '', '');
     let i = getListIndex();
 
     allLists[i].todos.push(newTodo);
@@ -45,21 +45,15 @@ const updateStorage = (function () {
     saveList();
   }
 
-  function editDescription(description, date, priority) {
-    console.log(description + date + priority);
+  function editDescription(ID, description, date, priority) {
+    let i = getListIndex();
+    let selectedTodo = allLists[i].todos[Number(ID)];
+    selectedTodo.description = description;
+    selectedTodo.date = date;
+    selectedTodo.priority = priority;
+    allLists[i].todos[Number(ID)] = selectedTodo;
+    saveList();
   }
-
-  // function updateCompleted() {
-  //   let i = getListIndex();
-  //   let todos = allLists[i].todos;
-  //   todos.forEach((todo, index) => {
-  //     if (todo.checked == true) {
-  //       allLists[i].todos.splice(index, 1);
-  //     }
-  //   });
-  //   saveList();
-  //   todosDisplay.renderTodos(getTodos());
-  // }
 
   function updateCompleted() {
     let i = getListIndex();
