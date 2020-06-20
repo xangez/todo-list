@@ -49,17 +49,33 @@ const updateStorage = (function () {
     console.log(description + date + priority);
   }
 
+  // function updateCompleted() {
+  //   let i = getListIndex();
+  //   let todos = allLists[i].todos;
+  //   todos.forEach((todo, index) => {
+  //     if (todo.checked == true) {
+  //       allLists[i].todos.splice(index, 1);
+  //     }
+  //   });
+  //   saveList();
+  //   todosDisplay.renderTodos(getTodos());
+  // }
+
   function updateCompleted() {
     let i = getListIndex();
     let todos = allLists[i].todos;
-    todos.forEach((todo, index) => {
+    let remove = [];
+    todos.forEach((todo) => {
       if (todo.checked == true) {
-        allLists[i].todos.splice(index, 1);
+        remove.push(todo);
       }
     });
+    let remaining = allLists[i].todos.filter(value => !remove.includes(value));
+    allLists[i].todos = remaining;
     saveList();
     todosDisplay.renderTodos(getTodos());
   }
+
 
   function deleteList() {
     let i = getListIndex();
