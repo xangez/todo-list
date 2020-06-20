@@ -20,7 +20,7 @@ const todosDisplay = (function () {
 
       //todoItem div
       const todoDivElement = todoElement.querySelector(".todo-item");
-      todoDivElement.id = index;
+      todoDivElement.id = index.toString();
 
       //checkbox
       const todoCheckbox = todoElement.querySelector(".todo-checkbox");
@@ -64,34 +64,40 @@ const todosDisplay = (function () {
   }
 
 
-  function editDescriptionHandler(e) {
+ function editDescriptionHandler(e) {
     let selectedTodoItem = e.target.parentNode.parentNode;
     const selectedTodoDesc = selectedTodoItem.querySelector(".descriptionContainer");
     if (selectedTodoDesc.style.display !== "grid") {
-      selectedTodoItem.addEventListener("blur", () => {selectedTodoDesc.style.display = "none"});
       selectedTodoDesc.style.display = "grid";
+      document.addEventListener('click', outsideClickListener);
     } else {
-      selectedTodoDesc.style.display = "none";
+     selectedTodoDesc.style.display = "none";
+
     }
 
+      let element = selectedTodoItem;
+      function outsideClickListener(event){
+          if (!element.contains(event.target) && isVisible(selectedTodoDesc)) { 
+            selectedTodoDesc.style.display = 'none';
+            removeClickListener();
+          }
+      }
+  
+      const removeClickListener = () => {
+          document.removeEventListener('click', outsideClickListener);
+      }
+  
+      const isVisible = elem => !!elem && !!( elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length);
+  }
 
-    //   selectedTodoItem.addEventListener("blur", function(){
-    //     // getInputValues();
-    //     selectedTodoDesc.style.display = "none";
-    //   });
-    // } else {
-    //   // getInputValues();
-    //   selectedTodoDesc.style.display = "none";
-    // }
-
-    // function getInputValues() {
+    // function getDescriptionValues() {
     //   console.log('hi');
     //   // let description = selectedTodoDesc.querySelector(".descriptionInput").value;
     //   // let date = selectedTodoDesc.querySelector(".descriptionDate").value;
     //   // let priority = selectedTodoDesc.querySelector("select").value; 
     //   // updateStorage.editDescription(description, date, priority);
     // }
-  }
+  
 
 
 

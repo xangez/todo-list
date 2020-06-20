@@ -41,7 +41,7 @@ const updateStorage = (function () {
 
   function editChecked(checkedState, ID) {
     let i = getListIndex();
-    allLists[i].todos[ID].checked = checkedState;
+    allLists[i].todos[Number(ID)].checked = checkedState;
     saveList();
   }
 
