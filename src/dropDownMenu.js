@@ -7,22 +7,42 @@ const dropDownMenu = (function () {
 
   const dropDownMenu = document.querySelector("#dropDownMenu");
 
-  let menuDisplay = "none";
   let currentState = 1;
+  let open = false;
 
   function toggleMenu() {
-    if (menuDisplay == "none") {
+    if (open == false) {
       dropDownMenu.style.display = "grid";
-      menuDisplay = "grid";
+      open = true;
+      document.addEventListener('mousedown', outsideClickListener);
 
       toggleDisabled("reEnable");
       refreshOptions();
       addMenuOptionEvents();
     } else {
       dropDownMenu.style.display = "none";
-      menuDisplay = "none";
+      open = false;
     }
   }
+
+  function outsideClickListener(event){
+    let element = dropDownMenu;
+    const isVisible = elem => !!elem && !!( elem.offsetWidth || elem.offsetHeight || elem.getClientRects().length);
+
+    const removeClickListener = () => {
+      document.removeEventListener('click', outsideClickListener);
+    }
+
+    if (!element.contains(event.target) && (event.target !== dropDownBtn) && isVisible(element)) { 
+      element.style.display = 'none';
+      removeClickListener();
+      open = false;
+    }
+
+ 
+  }
+
+
 
   function refreshOptions() {
     currentState = 1;

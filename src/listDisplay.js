@@ -3,7 +3,7 @@ import { updateStorage } from "./updateStorage.js";
 
 const listDisplay = (function () {
   const listContainer = document.querySelector("#list-container");
-  listContainer.addEventListener("click", toggleLists);
+  listContainer.addEventListener("mousedown", toggleLists);
 
   const addListForm = document.querySelector("#addList-form");
   addListForm.addEventListener("submit", addListController);
